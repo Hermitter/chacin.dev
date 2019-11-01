@@ -23,7 +23,7 @@ jobs:
         npm run export
         
     - name: Deploy to GitHub Pages
-    - uses: JamesIves/github-pages-deploy-action@2.0.3
+      uses: JamesIves/github-pages-deploy-action@2.0.3
 
         
       env:
