@@ -1,7 +1,7 @@
 ---
 title: Hello World 👋
 date: "2019-06-11T08:38:00.000Z"
-poster: "coolkid.png"
+poster: "dev.png"
 description: "hello world"
 ---
 

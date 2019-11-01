@@ -6,11 +6,11 @@ import * as sapper from '@sapper/server';
 const { PORT, NODE_ENV } = process.env;
 const dev = NODE_ENV === 'development';
 
-polka() // You can also use Express
+polka()
 	.use(
 		compression({ threshold: 0 }),
 		sirv('static', { dev }),
-		sirv('posts', { dev }),
+		sirv('posts', { dev, }),
 		sapper.middleware()
 	)
 	.listen(PORT, err => {

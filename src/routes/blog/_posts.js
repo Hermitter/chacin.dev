@@ -20,13 +20,13 @@ posts = fs.readdirSync(POSTS_DIR)
 	// Read .md file from each folder
 	.map(dirName => {
 		const postDirPath = POSTS_DIR+dirName;
-		const mdFileName = fs.readdirSync(postDirPath).find(fileName => /\.md$/.test(fileName));
+		const mdFileName = fs.readdirSync(postDirPath).find(fileName => fileName === 'post.md');
 		const mdContent = fs.readFileSync(path.join(POSTS_DIR, dirName, mdFileName), 'utf8')
 		
 		// Get post's information
 		const { data, content: rawContent } = matter(mdContent)
 		const { title, poster, date, description} = data
-		const slug = mdFileName.split('.')[0]
+		const slug = dirName
 		let content = rawContent
 		let excerpt = ''
 
