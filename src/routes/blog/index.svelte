@@ -26,6 +26,12 @@
 <!-- For Each Post -->
 <ul>
 	{#each posts as post}
-		<li><a rel='prefetch' href='blog/{post.slug}'>{post.title}</a></li>
+		<li>
+			<a rel='prefetch' href='blog/{post.slug}'>
+			<img width=300 height=200 src='{post.poster}'/><br/>
+			<h2>{post.title}</h2>
+		</a>
+		<p>{post.description}</p>
+		</li>
 	{/each}
 </ul>

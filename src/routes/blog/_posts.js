@@ -22,9 +22,10 @@ posts = fs.readdirSync(POSTS_DIR)
 		const postDirPath = POSTS_DIR+dirName;
 		const mdFileName = fs.readdirSync(postDirPath).find(fileName => /\.md$/.test(fileName));
 		const mdContent = fs.readFileSync(path.join(POSTS_DIR, dirName, mdFileName), 'utf8')
-
+		
+		// Get post's information
 		const { data, content: rawContent } = matter(mdContent)
-		const { title, date } = data
+		const { title, poster, date, description} = data
 		const slug = mdFileName.split('.')[0]
 		let content = rawContent
 		let excerpt = ''
@@ -35,15 +36,17 @@ posts = fs.readdirSync(POSTS_DIR)
 			content = splittedContent[1]
 		}
 
-		const poster = "";
-		const html = md.render(content)
+		// Set remaining metadata
+		const finalPoster = poster ? dirName+'/'+poster : "default-poster.png";
+		const html = md.render(content);
 		const readingStats = readingTime(content)
 		const printReadingTime = readingStats.text
 		const printDate = formatDate(new Date(date), 'MMMM d, yyyy')
 
 		return {
 			title: title || slug,
-			poster,
+			poster: finalPoster, //
+			description,
 			slug,
 			html,
 			date,
