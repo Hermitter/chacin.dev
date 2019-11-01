@@ -1,6 +1,6 @@
 {
-  "name": "TODO",
-  "description": "TODO",
+  "name": "blog.chacin.dev",
+  "description": "Personal blog for dev notes",
   "version": "0.0.1",
   "scripts": {
     "dev": "sapper dev",
@@ -13,7 +13,12 @@
   },
   "dependencies": {
     "compression": "^1.7.1",
+    "date-fns": "^2.6.0",
+    "gray-matter": "^4.0.2",
     "polka": "next",
+    "prismjs": "^1.17.1",
+    "reading-time": "^1.2.0",
+    "remarkable": "^2.0.0",
     "sirv": "^0.4.0"
   },
   "devDependencies": {

@@ -6,6 +6,9 @@ import babel from 'rollup-plugin-babel';
 import { terser } from 'rollup-plugin-terser';
 import config from 'sapper/config/rollup.js';
 import pkg from './package.json';
+const { Remarkable } = require('remarkable');
+let md = new Remarkable();
+const formatDate = require('date-fns/format')
 
 const mode = process.env.NODE_ENV;
 const dev = mode === 'development';
@@ -13,6 +16,15 @@ const legacy = !!process.env.SAPPER_LEGACY_BUILD;
 
 const onwarn = (warning, onwarn) => (warning.code === 'CIRCULAR_DEPENDENCY' && /[/\\]@sapper[/\\]/.test(warning.message)) || onwarn(warning);
 const dedupe = importee => importee === 'svelte' || importee.startsWith('svelte/');
+const markdown = () => ({
+	transform (content, id) {
+		if (!/\.md$/.test(id)) return null;
+		const data = md.render(content);
+		return {
+			code: `export default ${JSON.stringify(data.toString())};`
+		};
+	}
+});
 
 export default {
 	client: {
@@ -74,7 +86,8 @@ export default {
 			resolve({
 				dedupe
 			}),
-			commonjs()
+			commonjs(),
+			markdown(),
 		],
 		external: Object.keys(pkg.dependencies).concat(
 			require('module').builtinModules || Object.keys(process.binding('natives'))
