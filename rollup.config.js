@@ -26,6 +26,7 @@ const markdown = () => ({
 	}
 });
 
+
 export default {
 	client: {
 		input: config.client.input(),
