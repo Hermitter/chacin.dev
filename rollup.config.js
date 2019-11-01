@@ -8,7 +8,6 @@ import config from 'sapper/config/rollup.js';
 import pkg from './package.json';
 const { Remarkable } = require('remarkable');
 let md = new Remarkable();
-const formatDate = require('date-fns/format')
 
 const mode = process.env.NODE_ENV;
 const dev = mode === 'development';
@@ -25,7 +24,6 @@ const markdown = () => ({
 		};
 	}
 });
-
 
 export default {
 	client: {

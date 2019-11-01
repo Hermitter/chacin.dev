@@ -37,7 +37,7 @@ posts = fs.readdirSync(POSTS_DIR)
 		}
 
 		// Set remaining metadata
-		const finalPoster = poster ? dirName+'/'+poster : "default-poster.png";
+		const finalPoster = poster ? 'posts/'+dirName+'/'+poster : "default-poster.png";
 		const html = md.render(content);
 		const readingStats = readingTime(content)
 		const printReadingTime = readingStats.text
