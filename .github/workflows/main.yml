@@ -23,7 +23,7 @@ jobs:
     
     - name: Upload To GH-Pages
       run: |
-        cd __sapper__/build
+        cd __sapper__/export
         git config --global user.email "cchai013@fiu.edu"
         git config --global user.name "Carlos Chacin"
         git init
