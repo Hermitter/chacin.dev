@@ -1,6 +1,6 @@
 {
-  "name": "blog.chacin.dev",
-  "description": "Personal blog for dev notes",
+  "name": "chacin.dev",
+  "description": "Personal website & dev notes",
   "version": "0.0.1",
   "scripts": {
     "dev": "sapper dev",
