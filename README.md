@@ -5,7 +5,6 @@
 - [ ] Add syntax highlighting
 - [ ] Add more Markdown features
 - [ ] Live reloading for `posts` folder
-- [ ] Auto deployment with GitHub Actions
 
 # Development
 ```bash
