@@ -8,7 +8,7 @@
 
 <script>
 export let posts;
-import { faClock } from '@fortawesome/free-regular-svg-icons';
+import { faClock, faCalendar } from '@fortawesome/free-regular-svg-icons';
 import Icon from 'svelte-awesome/components/Icon.svelte'
 </script>
 
@@ -16,6 +16,10 @@ import Icon from 'svelte-awesome/components/Icon.svelte'
 	a {
 		outline-style: none;
 		text-decoration: none;
+	}
+
+	a:click {
+		background-color: red;
 	}
 
 	ul {
@@ -28,7 +32,6 @@ import Icon from 'svelte-awesome/components/Icon.svelte'
 	}
 
 	li {
-		/* min-width: 300px; */
 		max-width: 230px;
 		border-color: rgb(255,62,0);
 		border-style: solid;
@@ -51,24 +54,23 @@ import Icon from 'svelte-awesome/components/Icon.svelte'
 		height: 180px;
 	}
 
-
-
-	.read-time{
+	.meta-data p{
+		display: block;
 		margin:0;
 		font-size: 15px;
-		display: inline-block;
+		padding-left: 10px;
+		padding-right: 10px;
 	}
 
 	.meta-data {
 		width: 100%;
+		text-align: left;
 		background-color: rgb(48, 49, 49);
 	}
 
-	/* h2 */
-
-	/* p svg {
+	.icon-vAlign-fix {
 		vertical-align: sub;
-	} */
+	}
 </style>
 
 <svelte:head>
@@ -86,7 +88,8 @@ import Icon from 'svelte-awesome/components/Icon.svelte'
 				<h2>{post.title}</h2>
 				
 				<div class="meta-data">
-					<p class="read-time"><Icon scale="0.8" data={faClock}/> {post.readingTime}</p>
+					<p><span class="icon-vAlign-fix"><Icon data={faCalendar}/></span> {post.date}</p>
+					<p><span class="icon-vAlign-fix"><Icon data={faClock}/></span> {post.readingTime}</p>
 				</div>
 			</a>
 		<p>{post.description}</p>
