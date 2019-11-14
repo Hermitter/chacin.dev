@@ -27,8 +27,10 @@ jobs:
         git config --global user.email "cchai013@fiu.edu"
         git config --global user.name "Carlos Chacin"
         git init
-        git add .
-        git commit -m "Updated Website"
         git remote add origin git@github.com:Hermitter/chacin.dev
+        git pull
+        git checkout gh-pages
+        git add .
+        git commit -m "Updated Website" 
         git push -u origin gh-pages
         
