@@ -7,7 +7,9 @@
 </script>
 
 <script>
-	export let posts;
+export let posts;
+import { faClock } from '@fortawesome/free-regular-svg-icons';
+import Icon from 'svelte-awesome/components/Icon.svelte'
 </script>
 
 <style>
@@ -49,6 +51,24 @@
 		height: 180px;
 	}
 
+
+
+	.read-time{
+		margin:0;
+		font-size: 15px;
+		display: inline-block;
+	}
+
+	.meta-data {
+		width: 100%;
+		background-color: rgb(48, 49, 49);
+	}
+
+	/* h2 */
+
+	/* p svg {
+		vertical-align: sub;
+	} */
 </style>
 
 <svelte:head>
@@ -62,8 +82,12 @@
 	{#each posts as post}
 		<li>
 			<a rel='prefetch' href='blog/{post.slug}'>
-				<img src='{post.poster}'/><br/>
+				<img alt='{post.title}' src='{post.poster}'/><br/>
 				<h2>{post.title}</h2>
+				
+				<div class="meta-data">
+					<p class="read-time"><Icon scale="0.8" data={faClock}/> {post.readingTime}</p>
+				</div>
 			</a>
 		<p>{post.description}</p>
 		</li>
