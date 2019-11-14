@@ -1,3 +1,7 @@
+<script>
+import Social from '../components/Social.svelte';
+</script>
+
 <style>
 	h1, figure, p {
 		text-align: center;
@@ -58,7 +62,7 @@
 <figure>
 	<img id="profile-pic" alt='Carlos' src='headshot.jpg'>
 	<!-- <figcaption>A simple place to keep my notes</figcaption> -->
-	<p><strong>A simple place to keep my notes</strong></p>
+	<p><strong>A simple site to keep my notes</strong></p>
 </figure>
 
-<!-- Add Buttons -->
+<Social/>

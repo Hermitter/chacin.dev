@@ -71,6 +71,10 @@ import Icon from 'svelte-awesome/components/Icon.svelte'
 	.icon-vAlign-fix {
 		vertical-align: sub;
 	}
+
+	p span {
+		margin-right: 5px;
+	}
 </style>
 
 <svelte:head>
