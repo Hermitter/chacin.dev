@@ -24,6 +24,8 @@ jobs:
     - name: Upload To GH-Pages
       run: |
         cd __sapper__/build
+        git config --global user.email "cchai013@fiu.edu"
+        git config --global user.name "Carlos Chacin"
         git init
         git add .
         git commit -m "Updated Website"
