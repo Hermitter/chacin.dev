@@ -2,7 +2,7 @@
 title: Lorem Ipsum
 date: "2019-11-16"
 poster: "cover.png"
-description: "A hello world to test Markdown"
+description: "A hello world post to test Markdown features and how they're rendered."
 ---
 
 # h1 Heading

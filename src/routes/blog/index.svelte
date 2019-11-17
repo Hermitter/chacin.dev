@@ -76,6 +76,10 @@ import Icon from 'svelte-awesome/components/Icon.svelte'
 		margin-right: 5px;
 	}
 
+	.post-desc {
+		padding-right: 5px;
+		padding-left: 5px;
+	}
 
 </style>
 
@@ -98,7 +102,7 @@ import Icon from 'svelte-awesome/components/Icon.svelte'
 					<p><span class="icon-vAlign-fix"><Icon data={faClock}/></span> {post.readingTime}</p>
 				</div>
 			</a>
-		<p>{post.description}</p>
+		<p class="post-desc">{post.description}</p>
 		</li>
 	{/each}
 </ul>
