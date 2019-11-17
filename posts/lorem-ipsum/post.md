@@ -1,10 +1,11 @@
 ---
 title: Lorem Ipsum
-date: "2019-06-11T08:38:00.000Z"
-description: "another test post for fun"
+date: "2019-11-16"
+poster: "cover.png"
+description: "A hello world to test Markdown"
 ---
 
-# h1 Heading 8-)
+# h1 Heading
 ## h2 Heading
 ### h3 Heading
 #### h4 Heading

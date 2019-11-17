@@ -15,6 +15,11 @@
 
 <script>
 	export let post;
+
+	import { faClock, faCalendar } from '@fortawesome/free-regular-svg-icons';
+	import Icon from 'svelte-awesome/components/Icon.svelte'
+
+	console.log(post);
 </script>
 
 <style>
@@ -51,6 +56,35 @@
 	.content :global(li) {
 		margin: 0 0 0.5em 0;
 	}
+
+	.content :global(img) {
+		max-width: 100%;
+	}
+
+	.meta-data p{
+		display: block;
+		margin:0;
+		font-size: 15px;
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+
+	.meta-data {
+		display: inline-block;
+		border-radius: 5px;
+		padding: 5px;
+		text-align: left;
+		background-color: rgb(48, 49, 49);
+		margin-bottom: 40px;
+	}
+
+	.icon-vAlign-fix {
+		vertical-align: sub;
+	}
+
+	p span {
+		margin-right: 5px;
+	}
 </style>
 
 <svelte:head>
@@ -58,6 +92,12 @@
 </svelte:head>
 
 <h1>{post.title}</h1>
+
+				
+<div class="meta-data">
+	<p><span class="icon-vAlign-fix"><Icon data={faCalendar}/></span> {post.date}</p>
+	<p><span class="icon-vAlign-fix"><Icon data={faClock}/></span> {post.printReadingTime}</p>
+</div>
 
 <div class='content'>
 	{@html post.html}

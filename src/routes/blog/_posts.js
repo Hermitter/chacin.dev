@@ -1,12 +1,30 @@
-const fs = require('fs')
-const cwd = process.cwd()
-const path = require('path')
+const fs = require('fs');
+const cwd = process.cwd();
+const path = require('path');
+const hljs = require('highlight.js');
+const formatDate = require('date-fns/format');
+const matter = require('gray-matter');
+const readingTime = require('reading-time');
 const { Remarkable } = require('remarkable');
-let md = new Remarkable();
-const prism = require('prismjs')
-const formatDate = require('date-fns/format')
-const matter = require('gray-matter')
-const readingTime = require('reading-time')
+
+let md = new Remarkable({
+	html: true,
+
+	// Code Blocks Highlighting
+	highlight: function (str, lang) {
+		if (lang && hljs.getLanguage(lang)) {
+		  try {
+			return hljs.highlight(lang, str).value;
+		  } catch (err) {}
+		}
+	
+		try {
+		  return hljs.highlightAuto(str).value;
+		} catch (err) {}
+	
+		return '';
+	}
+});
 
 // Post vars
 let posts = [];

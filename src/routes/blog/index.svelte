@@ -49,7 +49,7 @@ import Icon from 'svelte-awesome/components/Icon.svelte'
 	}
 
 	img {
-		background-color: white;
+		background-color: #1c1b1b;
 		width: 100%;
 		height: 180px;
 	}
@@ -75,6 +75,8 @@ import Icon from 'svelte-awesome/components/Icon.svelte'
 	p span {
 		margin-right: 5px;
 	}
+
+
 </style>
 
 <svelte:head>
