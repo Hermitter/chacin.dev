@@ -93,7 +93,7 @@ import Icon from 'svelte-awesome/components/Icon.svelte'
 <ul>
 	{#each posts as post}
 		<li>
-			<a rel='prefetch' href='blog/{post.slug}'>
+			<a draggable="false" rel='prefetch' href='blog/{post.slug}'>
 				<img alt='{post.title}' src='{post.poster}'/><br/>
 				<h2>{post.title}</h2>
 				
@@ -101,8 +101,9 @@ import Icon from 'svelte-awesome/components/Icon.svelte'
 					<p><span class="icon-vAlign-fix"><Icon data={faCalendar}/></span> {post.date}</p>
 					<p><span class="icon-vAlign-fix"><Icon data={faClock}/></span> {post.readingTime}</p>
 				</div>
+
+				<p class="post-desc">{post.description}</p>
 			</a>
-		<p class="post-desc">{post.description}</p>
 		</li>
 	{/each}
 </ul>
