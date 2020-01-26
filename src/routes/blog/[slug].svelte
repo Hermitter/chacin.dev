@@ -16,16 +16,25 @@
 <script>
 	// html string from markdown
 	export let post;
-	// current url
 	let post_url = "https://chacin.dev/blog/"+post.title.split(" ").join("-").toLowerCase();
 
 	// code block theme
-	import "highlight.js/styles/dracula.css"
+	import "highlight.js/styles/dracula.css";
+	
 	// Disqus comments
 	import Comments from '../../components/Comments.svelte';
 
+	// Icons
 	import { faClock, faCalendar } from '@fortawesome/free-regular-svg-icons';
 	import Icon from 'svelte-awesome/components/Icon.svelte'
+
+	import { onMount } from 'svelte';
+	import clipboardInit from "../../js/clipboard";
+	import "../../css/clipboard.css";
+
+	onMount(async () => {
+		clipboardInit();
+	});
 </script>
 
 <style>

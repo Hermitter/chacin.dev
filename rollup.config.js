@@ -86,7 +86,11 @@ export default {
 			resolve({
 				dedupe
 			}),
-			commonjs(),
+			commonjs(
+				{namedExports: {
+                	'node_modules/jquery/dist/jquery.min.js': [ 'jquery' ]
+				}
+			}),
 			markdown(),
 			postcss(), // allows css imports
 		],
