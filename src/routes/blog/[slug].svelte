@@ -137,9 +137,12 @@
 	h1 {
 		font-size: 50px;
 		color: rgb(230, 230, 230);
+		z-index: 200;
+		position: relative;
 	}
 
 	#header {
+		position:relative;
 		margin: auto;
 		max-width: 1196px;
 	}
