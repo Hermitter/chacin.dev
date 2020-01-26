@@ -14,12 +14,13 @@
 </script>
 
 <script>
+	import "highlight.js/styles/dracula.css"
+
+	// html string of markdown
 	export let post;
 
 	import { faClock, faCalendar } from '@fortawesome/free-regular-svg-icons';
 	import Icon from 'svelte-awesome/components/Icon.svelte'
-
-	console.log(post);
 </script>
 
 <style>
@@ -36,12 +37,18 @@
 		font-weight: 500;
 	}
 
+	.content :global(code) {
+		background: #141414;;
+	}
+
 	.content :global(pre) {
-		background-color: #f9f9f9;
-		box-shadow: inset 1px 1px 5px rgba(0,0,0,0.05);
-		padding: 0.5em;
-		border-radius: 2px;
+		background:#141414;
+		border-radius: 5px;
+		padding: 1em;
+		margin: .5em 0;
 		overflow-x: auto;
+		border-style: solid;
+		border-color:#ff6529;
 	}
 
 	.content :global(pre) :global(code) {

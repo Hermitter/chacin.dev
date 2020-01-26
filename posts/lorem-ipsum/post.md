@@ -6,6 +6,7 @@ description: "A hello world post to test Markdown features and how they're rende
 ---
 
 ```js
+// how are you?
 let test = "hello world";
 
 console.log(test);

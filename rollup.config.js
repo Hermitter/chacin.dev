@@ -1,4 +1,5 @@
 import resolve from 'rollup-plugin-node-resolve';
+import postcss from 'rollup-plugin-postcss'
 import replace from 'rollup-plugin-replace';
 import commonjs from 'rollup-plugin-commonjs';
 import svelte from 'rollup-plugin-svelte';
@@ -87,6 +88,7 @@ export default {
 			}),
 			commonjs(),
 			markdown(),
+			postcss(), // allows css imports
 		],
 		external: Object.keys(pkg.dependencies).concat(
 			require('module').builtinModules || Object.keys(process.binding('natives'))
