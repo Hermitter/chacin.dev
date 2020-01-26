@@ -54,6 +54,9 @@ import Social from '../components/Social.svelte';
 
 <svelte:head>
 	<title>Carlos Chacin</title>
+	<meta name="description" content="Carlos Chacin's developer tutorials, setup guides, and personal notes">
+	<meta name="keywords" content="Rust,Node,Linux,JavaScript,Web">
+  	<meta name="author" content="Carlos Chacin">
 </svelte:head>
 
 <h1>Carlos Chacin</h1>
