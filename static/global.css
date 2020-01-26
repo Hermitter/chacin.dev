@@ -4,7 +4,7 @@ body {
 	font-size: 14px;
 	line-height: 1.5;
 	color: rgb(216, 214, 208);
-	background-color: rgb(24, 26, 27);
+	background-color: #0d0c0c;
 }
 
 ::selection {

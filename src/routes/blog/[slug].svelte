@@ -37,17 +37,13 @@
 		so we have to use the :global(...) modifier to target
 		all elements inside .content
 	*/
-	:global(#sapper) {
-		background: #0d0c0c;
-	}
-
 	.content :global(h2) {
 		font-size: 1.4em;
 		font-weight: 500;
 	}
 
 	.content :global(code) {
-		background: #0d0c0c;
+		background: rgb(24, 26, 27);
 		font-family: menlo, inconsolata, monospace;
 		font-size: calc(1em - 2px);
 		color: #f8f8f2;
@@ -56,7 +52,7 @@
 	}
 
 	.content :global(pre) {
-		background: #0d0c0c;
+		background: rgb(24, 26, 27);
 		border-radius: 5px;
 		padding: 1em;
 		margin: .5em 0;
@@ -111,6 +107,7 @@
 	#comments {
 		margin-top: 55px;
 	}
+
 </style>
 
 <svelte:head>
