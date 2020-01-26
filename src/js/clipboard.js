@@ -17,6 +17,7 @@ export default function clipboardInit() {
             jq(this).attr('id', currentId);
 
             // create the button just after the text in the code block
+            // TODO: remove image and use svg from fortawesome package
             let clipButton = '<a class="btn copybtn" data-clipboard-target="#'+currentId+'" allow-copy-notify="true"><img src="/clippy.svg" draggable="false" width="13" alt="Copy to clipboard"></a>';
             jq(this).after(clipButton);
         });
@@ -34,24 +35,25 @@ export default function clipboardInit() {
             setTimeout(function(){copyButton.removeClass("copy-success");},100);
 
             // show copy notification
+            // TODO: replace tooltip function or add jquery-ui library
             if(copyButton.attr("allow-copy-notify") === "true"){
-                copyButton.tooltip({trigger: "click"});
+                // copyButton.tooltip({trigger: "click"});
                 copyButton.attr("allow-copy-notify", false);
-                copyButton.tooltip("hide").attr("data-original-title", "copied!").tooltip("show");
+                // copyButton.tooltip("hide").attr("data-original-title", "copied!").tooltip("show");
                 
                 // remove copy notification
                 setTimeout(function() {
-                copyButton.tooltip("hide");
+                // copyButton.tooltip("hide");
                 copyButton.css("background-color","#cccccd");
                 copyButton.attr("allow-copy-notify", true);
                 }, 1000);
             }
             
             // prevent copy notification spam
-            copyButton.tooltip().off();
+            // copyButton.tooltip().off();
 
             // prevent code block from being highlighted
-            event.clearSelection();
+            // event.clearSelection();
         });
     }
 }

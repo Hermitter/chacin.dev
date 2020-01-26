@@ -8,10 +8,10 @@ body {
 }
 
 ::selection {
-	background: #005CCC; /* WebKit/Blink Browsers */
+	background: rgb(196, 95, 0); /* WebKit/Blink Browsers */
 }
 ::-moz-selection {
-	background: #005CCC; /* Gecko Browsers */
+	background: rgb(204, 65, 0); /* Gecko Browsers */
 }
 
 h1, h2, h3, h4, h5, h6 {
