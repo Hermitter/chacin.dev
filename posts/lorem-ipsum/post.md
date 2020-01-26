@@ -5,6 +5,12 @@ poster: "cover.png"
 description: "A hello world post to test Markdown features and how they're rendered."
 ---
 
+```js
+let test = "hello world";
+
+console.log(test);
+```
+
 # h1 Heading
 ## h2 Heading
 ### h3 Heading
