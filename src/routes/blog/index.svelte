@@ -85,6 +85,9 @@ import Icon from 'svelte-awesome/components/Icon.svelte'
 
 <svelte:head>
 	<title>Blog | Carlos Chacin</title>
+	<meta name="description" content="Table of contents for each developer tutorial available">
+	<meta name="keywords" content="Blog,Rust,Node,Linux,JavaScript,Web,Raspberry pi">
+  	<meta name="author" content="co-authored by Carlos Chacin, Hermitter">
 </svelte:head>
 
 <h1>Recent posts</h1>
