@@ -43,7 +43,7 @@ posts = fs.readdirSync(POSTS_DIR)
 		
 		// Get post's information
 		const { data, content: rawContent } = matter(mdContent)
-		const { title, poster, date, description} = data
+		const { title, poster, frontCover, date, description} = data
 		const slug = dirName
 		let content = rawContent
 		let excerpt = ''
@@ -56,6 +56,7 @@ posts = fs.readdirSync(POSTS_DIR)
 
 		// Set remaining metadata
 		const finalPoster = poster ? 'posts/'+dirName+'/'+poster : "default-poster.png";
+		const finalFrontCover = frontCover ? '../posts/'+dirName+'/'+frontCover : undefined;
 		const html = md.render(content);
 		const readingStats = readingTime(content)
 		const printReadingTime = readingStats.text
@@ -63,7 +64,8 @@ posts = fs.readdirSync(POSTS_DIR)
 
 		return {
 			title: title || slug,
-			poster: finalPoster, //
+			poster: finalPoster,
+			frontCover: finalFrontCover,
 			description,
 			slug,
 			html,

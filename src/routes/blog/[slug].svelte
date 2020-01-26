@@ -46,6 +46,11 @@
 		so we have to use the :global(...) modifier to target
 		all elements inside .content
 	*/
+	.content {
+		max-width: 56em;
+		margin: auto;
+	}
+
 	.content :global(h2) {
 		font-size: 1.4em;
 		font-weight: 500;
@@ -117,23 +122,42 @@
 		margin-top: 55px;
 	}
 
+	#front-cover {
+		margin: auto;
+		display: block;
+		width: 100%;
+		box-shadow: 0px 0px 300px 212px #ff3e00;
+	}
+
+	h1 {
+		font-size: 50px;
+	}
+
+	#header {
+		margin: auto;
+		max-width: 1196px;
+	}
+
 </style>
 
 <svelte:head>
 	<title>{post.title}</title>
 </svelte:head>
 
-<h1>{post.title}</h1>
+<div id="header">
+	<h1>{post.title}</h1>
+	<img id="front-cover" src={post.frontCover} alt="blog post cover image"/>
 
-				
-<div class="meta-data">
-	<p><span class="icon-vAlign-fix"><Icon data={faCalendar}/></span> {post.date}</p>
-	<p><span class="icon-vAlign-fix"><Icon data={faClock}/></span> {post.printReadingTime}</p>
+	<br/>				
+	<div class="meta-data">
+		<p><span class="icon-vAlign-fix"><Icon data={faCalendar}/></span> {post.date}</p>
+		<p><span class="icon-vAlign-fix"><Icon data={faClock}/></span> {post.printReadingTime}</p>
+	</div>
 </div>
 
-<div class='content'>
+<article class='content'>
 	{@html post.html}
-</div>
+</article>
 
 <div id="comments">
 <Comments page_url={post_url} page_identifier={post_url}/>

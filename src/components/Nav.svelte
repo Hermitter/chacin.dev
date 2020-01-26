@@ -10,6 +10,8 @@
 		font-weight: 300;
 		padding: 0 1em;
 		font-weight: 400;
+		position: relative;
+		z-index: 900;
 	}
 
 	ul {
