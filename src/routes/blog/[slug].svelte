@@ -38,17 +38,23 @@
 	}
 
 	.content :global(code) {
-		background: #141414;;
+		background: #0d0c0c;
+		font-family: menlo, inconsolata, monospace;
+		font-size: calc(1em - 2px);
+		color: #f8f8f2;
+		padding: 0.2em 0.4em;
+		border-radius: 2px;
 	}
 
 	.content :global(pre) {
-		background:#141414;
+		background: #0d0c0c;
 		border-radius: 5px;
 		padding: 1em;
 		margin: .5em 0;
 		overflow-x: auto;
 		border-style: solid;
-		border-color:#ff6529;
+		border-width: 1px;
+		border-color:#ff3e00;
 	}
 
 	.content :global(pre) :global(code) {

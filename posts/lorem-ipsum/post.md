@@ -6,10 +6,22 @@ description: "A hello world post to test Markdown features and how they're rende
 ---
 
 ```js
-// how are you?
-let test = "hello world";
+// say hello!
+let response = "Hello World!";
 
-console.log(test);
+console.log(response);
+
+// Create an empty NDEF message
+let msg = new nfc.message();
+
+// Add NDEF Records to message
+msg.addUriRecord("https://community.matrix.one");
+msg.addUriRecord("tel:+14085551212");
+msg.addTextRecord("Hello World");
+msg.addTextRecord("Hola Mundo", "es");
+msg.addMimeMediaRecord("text/json", '{"answer": 42}');
+
+// You then pass msg into nfc.write.message(msg);
 ```
 
 # h1 Heading
