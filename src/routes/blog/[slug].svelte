@@ -56,6 +56,11 @@
 		font-weight: 500;
 	}
 
+	.content :global(h1) {
+		font-size: 1.4em;
+		font-weight: 500;
+	}
+
 	.content :global(code) {
 		background: rgb(24, 26, 27);
 		font-family: menlo, inconsolata, monospace;
@@ -131,6 +136,7 @@
 
 	h1 {
 		font-size: 50px;
+		color: rgb(230, 230, 230);
 	}
 
 	#header {
