@@ -14,10 +14,15 @@
 </script>
 
 <script>
-	import "highlight.js/styles/dracula.css"
-
-	// html string of markdown
+	// html string from markdown
 	export let post;
+	// current url
+	let post_url = "https://chacin.dev/blog/"+post.title.split(" ").join("-").toLowerCase();
+
+	// code block theme
+	import "highlight.js/styles/dracula.css"
+	// Disqus comments
+	import Comments from '../../components/Comments.svelte';
 
 	import { faClock, faCalendar } from '@fortawesome/free-regular-svg-icons';
 	import Icon from 'svelte-awesome/components/Icon.svelte'
@@ -32,6 +37,10 @@
 		so we have to use the :global(...) modifier to target
 		all elements inside .content
 	*/
+	:global(#sapper) {
+		background: #0d0c0c;
+	}
+
 	.content :global(h2) {
 		font-size: 1.4em;
 		font-weight: 500;
@@ -98,6 +107,10 @@
 	p span {
 		margin-right: 5px;
 	}
+
+	#comments {
+		margin-top: 55px;
+	}
 </style>
 
 <svelte:head>
@@ -114,4 +127,8 @@
 
 <div class='content'>
 	{@html post.html}
+</div>
+
+<div id="comments">
+<Comments page_url={post_url} page_identifier={post_url}/>
 </div>
