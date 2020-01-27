@@ -81,6 +81,12 @@ import Icon from 'svelte-awesome/components/Icon.svelte'
 		padding-left: 5px;
 	}
 
+	#post-wrapper {
+		display: block;
+		margin: auto;
+		max-width: 56em;
+	}
+
 </style>
 
 <svelte:head>
@@ -90,23 +96,25 @@ import Icon from 'svelte-awesome/components/Icon.svelte'
   	<meta name="author" content="co-authored by Carlos Chacin, Hermitter">
 </svelte:head>
 
-<h1>Recent posts</h1>
 
-<!-- For Each Post -->
-<ul>
-	{#each posts as post}
-		<li>
-			<a draggable="false" rel='prefetch' href='blog/{post.slug}'>
-				<img alt='{post.title}' src='{post.poster}'/><br/>
-				<h2>{post.title}</h2>
-				
-				<div class="meta-data">
-					<p><span class="icon-vAlign-fix"><Icon data={faCalendar}/></span> {post.date}</p>
-					<p><span class="icon-vAlign-fix"><Icon data={faClock}/></span> {post.readingTime}</p>
-				</div>
+<div id="post-wrapper">
+	<h1>Recent posts</h1>
+	<!-- For Each Post -->
+	<ul>
+		{#each posts as post}
+			<li>
+				<a draggable="false" rel='prefetch' href='blog/{post.slug}'>
+					<img alt='{post.title}' src='{post.poster}'/><br/>
+					<h2>{post.title}</h2>
+					
+					<div class="meta-data">
+						<p><span class="icon-vAlign-fix"><Icon data={faCalendar}/></span> {post.date}</p>
+						<p><span class="icon-vAlign-fix"><Icon data={faClock}/></span> {post.readingTime}</p>
+					</div>
 
-				<p class="post-desc">{post.description}</p>
-			</a>
-		</li>
-	{/each}
-</ul>
+					<p class="post-desc">{post.description}</p>
+				</a>
+			</li>
+		{/each}
+	</ul>
+</div>
