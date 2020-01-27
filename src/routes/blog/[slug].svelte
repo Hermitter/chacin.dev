@@ -137,12 +137,23 @@
 		max-width: 1196px;
 	}
 
+	/* Safari 4.0 - 8.0 */
+	@-webkit-keyframes title-shadow {
+		from {box-shadow: 0px 0px 0px 0px #ff3e00d9;}
+		to {box-shadow: 0px -733px 300px 800px #ff3e00d9;}
+	}
+	/* Standard syntax */
+	@keyframes title-shadow {
+		from {box-shadow: 0px -1733px 300px 800px #ff3e00d9;}
+		to {box-shadow: 0px -733px 300px 800px #ff3e00d9;}
+	}
+
 	#front-cover {
 		margin: auto;
 		display: block;
 		width: 100%;
-		/* box-shadow: 0px 0px 300px 212px #ff3e00; */
-		box-shadow: 0px -733px 300px 800px #ff3e00d9;
+		-webkit-animation: title-shadow 3s forwards;
+		animation: title-shadow 4s forwards;
 	}
 
 	h1 {
