@@ -38,6 +38,12 @@
 </script>
 
 <style>
+	#article-wrapper {
+		margin: auto;
+		position: relative;
+		width: 100%;
+	}
+	
 	/*
 		By default, CSS is locally scoped to the component,
 		and any unused styles are dead-code-eliminated.
@@ -47,8 +53,10 @@
 		all elements inside .content
 	*/
 	.content {
+		position: relative;
 		max-width: 56em;
 		margin: auto;
+		z-index: 100;
 	}
 
 	.content :global(h2) {
@@ -124,14 +132,17 @@
 	}
 
 	#comments {
+		margin: auto;
 		margin-top: 55px;
+		max-width: 1196px;
 	}
 
 	#front-cover {
 		margin: auto;
 		display: block;
 		width: 100%;
-		box-shadow: 0px 0px 300px 212px #ff3e00;
+		/* box-shadow: 0px 0px 300px 212px #ff3e00; */
+		box-shadow: 0px -733px 300px 800px #ff3e00ab;
 	}
 
 	h1 {
@@ -164,9 +175,11 @@
 	</div>
 </div>
 
-<article class='content'>
-	{@html post.html}
-</article>
+<div id="article-wrapper">
+	<article class='content'>
+		{@html post.html}
+	</article>
+</div>
 
 <div id="comments">
 <Comments page_url={post_url} page_identifier={post_url}/>
