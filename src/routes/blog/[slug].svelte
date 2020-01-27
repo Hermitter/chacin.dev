@@ -139,7 +139,7 @@
 
 	/* Safari 4.0 - 8.0 */
 	@-webkit-keyframes title-shadow {
-		from {box-shadow: 0px 0px 0px 0px #ff3e00d9;}
+		from {box-shadow: 0px -1733px 300px 800px #ff3e00d9;}
 		to {box-shadow: 0px -733px 300px 800px #ff3e00d9;}
 	}
 	/* Standard syntax */
@@ -153,7 +153,7 @@
 		display: block;
 		width: 100%;
 		-webkit-animation: title-shadow 3s forwards;
-		animation: title-shadow 4s forwards;
+		animation: title-shadow 3s forwards;
 	}
 
 	h1 {
