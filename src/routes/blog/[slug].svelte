@@ -142,7 +142,7 @@
 		display: block;
 		width: 100%;
 		/* box-shadow: 0px 0px 300px 212px #ff3e00; */
-		box-shadow: 0px -733px 300px 800px #ff3e00ab;
+		box-shadow: 0px -733px 300px 800px #ff3e00d9;
 	}
 
 	h1 {
@@ -162,6 +162,9 @@
 
 <svelte:head>
 	<title>{post.title}</title>
+	<meta name="description" content={post.description}>
+	<meta name="keywords" content={post.keywords}>
+  	<meta name="author" content="co-authored by Carlos Chacin, Hermitter">
 </svelte:head>
 
 <div id="header">
