@@ -34,7 +34,7 @@ rustup target add armv7-unknown-linux-gnueabihf
 Next we need to get a compatible Arm linker for Rust to compile against. Download any Toolchain version for "[AArch32 target with hard float](https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-a/downloads)", unzip it, and add the binaries to your `$PATH`.
 
 ```bash
-# add to your bash.rc, zsh.rc, config.fish, or etc..
+# add to your .bashrc, .zshrc, config.fish, or etc..
 export PATH="$HOME/PATH_TO_YOUR_DOWNLOAD/gcc-arm-none-eabi-9-2019-q4-major/bin:$PATH"
 ```
 
