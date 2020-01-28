@@ -54,8 +54,8 @@ import Social from '../components/Social.svelte';
 
 <svelte:head>
 	<title>Carlos Chacin</title>
-	<meta name="description" content="Carlos Chacin's personal website and blog for developer tutorials">
-	<meta name="keywords" content="Hermitter,Developer,Blog,Website">
+	<meta name="description" content="Hermitter's personal website and blog for developer tutorials">
+	<meta name="keywords" content="portfolio,Developer,Blog,Website">
   	<meta name="author" content="co-authored by Carlos Chacin, Hermitter">
 </svelte:head>
 
