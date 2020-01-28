@@ -13,6 +13,12 @@ import Icon from 'svelte-awesome/components/Icon.svelte'
 </script>
 
 <style>
+	/* override Icon styling */
+	.meta-data p span :global(svg) {
+		width: 14px !important;
+		height: 16px !important;
+	}
+
 	a {
 		outline-style: none;
 		text-decoration: none;

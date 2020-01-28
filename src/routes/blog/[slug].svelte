@@ -155,6 +155,12 @@
 		margin-bottom: 40px;
 	}
 
+	/* override Icon styling */
+	.meta-data p span :global(svg) {
+		width: 14px !important;
+		height: 16px !important;
+	}
+
 	.icon-vAlign-fix {
 		vertical-align: sub;
 	}
