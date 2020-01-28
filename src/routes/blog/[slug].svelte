@@ -129,7 +129,7 @@
 		border-radius: 3px;
 		padding: 0 5px 0 5px;
 		border-width: 1px;
-		border-color: #fffefe;
+		border-color: #444;
 		border-style: solid;
 	}
 

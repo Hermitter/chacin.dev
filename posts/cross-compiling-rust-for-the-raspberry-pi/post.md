@@ -51,6 +51,7 @@ touch config.toml
 Add the following to `pi_project/.cargo/config.toml`.
 ```yaml
 [build]
+
 # Pi 2/3/4
 [target.armv7-unknown-linux-gnueabihf]
 linker = "arm-none-linux-gnueabihf-gcc"
@@ -64,7 +65,7 @@ linker = "arm-none-linux-gnueabihf-gcc"
 # rustflags = ["-C", "linker=arm-none-linux-gnueabihf-gcc"]
 ```
 
-## Upload and Run your Binary
+## Run your Binary on the Pi
 Below is a quick example workflow you can use to quickly deploy your project on a Pi.
 
 ![](/posts/cross-compiling-rust-for-the-raspberry-pi/demo.png)
