@@ -1,8 +1,9 @@
 ---
-title: Lorem Ipsum
+title: Lorem Ipsum Ipsum Lorem 
 date: "2019-11-16"
 poster: "poster.png"
 frontCover: "frontCover.png" 
+keywords: "Hermitter,hello world,blog,markdown"
 description: "A hello world post to test Markdown features and how they're rendered."
 ---
 

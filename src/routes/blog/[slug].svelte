@@ -59,16 +59,33 @@
 		z-index: 100;
 	}
 
-	.content :global(h2) {
-		font-size: 1.4em;
-		font-weight: 500;
+	.content :global(p) {
+		font-size: 20px;
 	}
 
 	.content :global(h1) {
-		font-size: 1.4em;
+		font-size: 3.4em;
+		font-weight: 500;
+		margin-top: 50px;
+	}
+
+	.content :global(h2) {
+		font-size: 2.7em;
+		font-weight: 500;
+		margin-top: 50px;
+	}
+
+	.content :global(h3) {
+		font-size: 2.0em;
 		font-weight: 500;
 	}
 
+	.content :global(h4) {
+		font-size: 1.3em;
+		font-weight: 500;
+	}
+
+	
 	.content :global(code) {
 		background: rgb(24, 26, 27);
 		font-family: menlo, inconsolata, monospace;
@@ -104,6 +121,21 @@
 
 	.content :global(img) {
 		max-width: 100%;
+	}
+	
+	.content :global(blockquote) {
+		margin: 0;
+		background: #1c1c1c;
+		border-radius: 3px;
+		padding: 0 5px 0 5px;
+		border-width: 1px;
+		border-color: #fffefe;
+		border-style: solid;
+	}
+
+	.content :global(blockquote) :global(p) {
+		margin: 6px;
+		font-size: 16px;
 	}
 
 	.meta-data p{
