@@ -22,6 +22,12 @@ import Icon from 'svelte-awesome/components/Icon.svelte'
 		background-color: red;
 	}
 
+	h2 {
+		font-size: 20px;
+		padding-left: 2px;
+		padding-right: 2px;
+	}
+
 	ul {
 		margin: 0 0 1em 0;
 		line-height: 1.5;
@@ -37,7 +43,7 @@ import Icon from 'svelte-awesome/components/Icon.svelte'
 		border-style: solid;
 		border-width: 1px;
 		border-radius: 0 0 2% 2%;
-		margin: 5px;
+		margin: 10px;
 		background-color: #090909;
 		text-align: center;
 		-webkit-transition: 0.1s;
