@@ -64,7 +64,6 @@ import Social from '../components/Social.svelte';
 
 <figure>
 	<img id="profile-pic" alt='Carlos' src='headshot.jpg'>
-	<!-- <figcaption>A simple place to keep my notes</figcaption> -->
 	<p><strong>A simple site to keep my notes</strong></p>
 </figure>
 
