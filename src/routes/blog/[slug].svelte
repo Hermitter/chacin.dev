@@ -16,6 +16,7 @@
 <script>
 	// html string from markdown
 	export let post;
+	// TODO: remove hard coded hostname
 	let post_url = "https://chacin.dev/blog/"+post.title.split(" ").join("-").toLowerCase();
 
 	// code block theme
@@ -216,7 +217,7 @@
 	<meta name="author" content="co-authored by Carlos Chacin, Hermitter">
 	
 	<meta property="og:title" content={post.title}>
-	<meta property="og:url" content={post.url}>
+	<meta property="og:url" content={post_url}>
 	<meta property="og:type" content="blog">
 	<meta property="og:description" content={post.description}>
 	<!-- TODO: remove hard coded hostname -->
