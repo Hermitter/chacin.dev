@@ -213,7 +213,15 @@
 	<title>{post.title}</title>
 	<meta name="description" content={post.description}>
 	<meta name="keywords" content={post.keywords}>
-  	<meta name="author" content="co-authored by Carlos Chacin, Hermitter">
+	<meta name="author" content="co-authored by Carlos Chacin, Hermitter">
+	
+	<meta property="og:title" content={post.title}>
+	<meta property="og:url" content={post.url}>
+	<meta property="og:type" content="blog">
+	<meta property="og:description" content={post.description}>
+	<!-- TODO: remove hard coded hostname -->
+	<meta property="og:image" content={"https://chacin.dev/"+post.poster}>
+
 </svelte:head>
 
 <div id="header">
