@@ -34,11 +34,14 @@ rustup target add armv7-unknown-linux-gnueabihf
 
 > We're installing this from source to stay distro agnostic.
 
-Next we need to get a compatible Arm linker for Rust to compile against. Download any Toolchain version for "[AArch32 target with hard float](https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-a/downloads)", unzip it, and add the binaries to your `$PATH`.
+Next we need to get a compatible Arm linker for Rust to compile against. Download any **Linux** Toolchain version for **AArch32 target with hard float**, unzip it, and add the binaries to your `$PATH`.
+
+- [GNU Toolchain Downloads](https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-a/downloads)
 
 ```bash
-# add to your .bashrc, .zshrc, config.fish, or etc..
-export PATH="$HOME/PATH_TO_YOUR_DOWNLOAD/gcc-arm-none-eabi-9-2019-q4-major/bin:$PATH"
+# Add to your .bashrc, .zshrc, config.fish, or etc..
+# Example: export PATH="$HOME/Documents/gcc-arm-none-eabi-9-2019-q4-major/bin:$PATH"
+export PATH="$HOME/PATH_TO_YOUR_DOWNLOAD/PATH_TO_TOOLCHAIN_FOLDER/bin:$PATH"
 ```
 
 ## Create a Cargo Project
