@@ -8,7 +8,7 @@ description: "Compile a Rust program on your Linux computer and run it on the Pi
 ---
 
 # Getting Started
-> If you want to automate this process with Docker, take a look at [Rust Corss](https://github.com/japaric/rust-cross)!
+> If you want to automate this process with Docker, take a look at [Rust Cross](https://github.com/japaric/rust-cross)!
 
 This guide covers how to set up your linux computer to `compile`, `upload`, and `run` a Rust binary on your Raspberry Pi. In order to do this, you'll need to:
 
