@@ -9,7 +9,7 @@ description: "Compile a Rust program on your Linux computer and run it on the Pi
 
 # Getting Started
 
-> If you want to automate this process with Docker, take a look at [Rust Cross](https://github.com/japaric/rust-cross)!
+> If you want to automate this process with Docker, take a look at [cross](https://github.com/rust-embedded/cross)!
 
 This guide covers how to set up your linux computer to `compile`, `upload`, and `run` a Rust binary on your Raspberry Pi. In order to do this, you'll need to:
 
@@ -39,8 +39,8 @@ Next we need to get a compatible Arm linker for Rust to compile against. Downloa
 > You may have to search through previous releases to find what you want.
 
 - [GNU Toolchain Downloads](https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-a/downloads)
-    - `Pi   0/1`: **AArch32 target with hard float (arm-linux-gnueabihf)**
-    - `Pi 2/3/4`: **AArch32 target with hard float (arm-none-linux-gnueabihf)**
+  - `Pi 0/1`: **AArch32 target with hard float (arm-linux-gnueabihf)**
+  - `Pi 2/3/4`: **AArch32 target with hard float (arm-none-linux-gnueabihf)**
 
 Unzip it, and add the binaries to your `$PATH`.
 
