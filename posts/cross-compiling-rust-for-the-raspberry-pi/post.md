@@ -64,7 +64,7 @@ touch config.toml
 
 Add the following to `pi_project/.cargo/config.toml`.
 
-```yaml
+```toml
 [build]
 
 # Pi 0/1
