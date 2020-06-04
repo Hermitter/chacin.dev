@@ -1,3 +1,5 @@
+import { toggle_class } from 'svelte/internal';
+
 const fs = require('fs');
 const cwd = process.cwd();
 const path = require('path');
@@ -7,7 +9,8 @@ const matter = require('gray-matter');
 const readingTime = require('reading-time');
 const { Remarkable } = require('remarkable');
 
-let md = new Remarkable({
+let mdToc = require("markdown-toc");
+let mdOptions = {
 	html: true,
 
 	// Code Blocks Highlighting
@@ -24,7 +27,7 @@ let md = new Remarkable({
 	
 		return '';
 	}
-});
+};
 
 // Post vars
 let posts = [];
@@ -57,8 +60,9 @@ posts = fs.readdirSync(POSTS_DIR)
 		// Set remaining metadata
 		const finalPoster = poster ? 'posts/'+dirName+'/'+poster : "default-poster.png";
 		const finalFrontCover = frontCover ? '../posts/'+dirName+'/'+frontCover : undefined;
-		const finalKeywords = keywords
-		const html = md.render(content);
+		const finalKeywords = keywords;
+		const html = new Remarkable(mdOptions).render(content);
+		const toc = new Remarkable().use(mdToc.plugin({})).render(content).json;
 		const readingStats = readingTime(content)
 		const printReadingTime = readingStats.text
 		const printDate = formatDate(new Date(date), 'MMMM d, yyyy')
@@ -71,6 +75,7 @@ posts = fs.readdirSync(POSTS_DIR)
 			description,
 			slug,
 			html,
+			toc,
 			date,
 			excerpt,
 			printDate,

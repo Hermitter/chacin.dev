@@ -36,6 +36,9 @@
 	onMount(async () => {
 		clipboardInit();
 	});
+
+	// todo: remove this
+	console.log(post.toc)
 </script>
 
 <style>
