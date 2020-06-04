@@ -14,10 +14,16 @@
 </script>
 
 <script>
+	// hostname
+	import { stores } from '@sapper/app';
+	const { page } = stores();
+	const hostname = $page.host;
+
 	// html string from markdown
 	export let post;
-	// TODO: remove hard coded hostname
-	let post_url = "https://chacin.dev/blog/"+post.title.split(" ").join("-").toLowerCase();
+
+	// page url
+	let post_url = hostname+"/blog/"+post.title.split(" ").join("-").toLowerCase();
 
 	// code block theme
 	import "highlight.js/styles/dracula.css";
@@ -36,9 +42,6 @@
 	onMount(async () => {
 		clipboardInit();
 	});
-
-	// todo: remove this
-	console.log(post.toc)
 </script>
 
 <style>
@@ -223,8 +226,7 @@
 	<meta property="og:url" content={post_url}>
 	<meta property="og:type" content="blog">
 	<meta property="og:description" content={post.description}>
-	<!-- TODO: remove hard coded hostname -->
-	<meta property="og:image" content={"https://chacin.dev/"+post.poster}>
+	<meta property="og:image" content={"https://"+hostname+"/"+post.poster}>
 
 </svelte:head>
 
@@ -238,6 +240,9 @@
 		<p><span class="icon-vAlign-fix"><Icon data={faClock}/></span> {post.printReadingTime}</p>
 	</div>
 </div>
+
+<p>TODO ADD THIS: {JSON.stringify(post.toc)}</p>
+
 
 <div id="article-wrapper">
 	<article class='content'>
