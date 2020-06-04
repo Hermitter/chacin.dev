@@ -19,7 +19,7 @@
     "date-fns": "^2.6.0",
     "gray-matter": "^4.0.2",
     "highlight.js": "^9.16.2",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.1",
     "polka": "next",
     "prismjs": "^1.17.1",
     "reading-time": "^1.2.0",
@@ -43,7 +43,7 @@
     "rollup-plugin-replace": "^2.0.0",
     "rollup-plugin-svelte": "^5.0.1",
     "rollup-plugin-terser": "^5.2.0",
-    "sapper": "^0.27.0",
+    "sapper": "^0.27.13",
     "svelte": "^3.0.0"
   }
 }
