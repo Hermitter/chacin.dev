@@ -4,7 +4,7 @@ date: "2020-1-28"
 frontCover: "frontCover.png"
 poster: "poster.png"
 keywords: "cross compile, rust, raspberry pi, linux"
-description: "Compile a Rust program on your Linux computer and run it on the Pi!"
+description: "Compile a Rust program on your Linux computer and run it on the Pi"
 ---
 
 # Getting Started
