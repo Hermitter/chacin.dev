@@ -1,5 +1,5 @@
 ---
-title: Getting started with WebAssembly and Rust
+title: Getting Started with WebAssembly and Rust
 date: "2020-7-26"
 frontCover: "frontCover.jpg"
 poster: "poster.png"
