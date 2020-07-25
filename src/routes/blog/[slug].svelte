@@ -60,6 +60,12 @@
 		z-index: 100;
 	}
 
+	.content :global(p img)  {
+		display: block;
+		margin-right: auto;
+		margin-left: auto;
+	}
+
 	.content :global(p) {
 		font-size: 20px;
 	}
