@@ -1,0 +1,102 @@
+nav.svelte-1gdzr3u{color:#fff;background-color:rgb(36, 41, 46);border-bottom:1px solid rgb(80, 115, 134);font-weight:300;padding:0 1em;font-weight:400;position:relative;z-index:900}ul.svelte-1gdzr3u{margin:0;padding:0}ul.svelte-1gdzr3u::after{content:'';display:block;clear:both}li.svelte-1gdzr3u{display:block;float:left;-webkit-transition:0.1s;transition:0.1s}.selected.svelte-1gdzr3u{position:relative;display:inline-block}.selected.svelte-1gdzr3u::after{position:absolute;content:'';width:calc(100% - 1em);height:2px;background-color:rgb(255,62,0);display:block;bottom:-1px}a.svelte-1gdzr3u{outline-style:none;text-decoration:none;padding:1em 0.5em;display:block}li.svelte-1gdzr3u:hover{background-color:rgb(255,62,0)}li.svelte-1gdzr3u:active{background-color:rgba(255, 64, 0, 0.719)}
+main.svelte-1m3ph62{position:relative;background-color:#0d0c0c;padding:2em;margin:0 auto;box-sizing:border-box}
+h1.svelte-8od9u6,p.svelte-8od9u6{margin:0 auto}h1.svelte-8od9u6{font-size:2.8em;font-weight:700;margin:0 0 0.5em 0}p.svelte-8od9u6{margin:1em auto}@media(min-width: 480px){h1.svelte-8od9u6{font-size:4em}}
+/*
+
+github.com style (c) Vasily Polovnyov <vast@whiteants.net>
+
+*/
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  color: #333;
+  background: #f8f8f8;
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: #998;
+  font-style: italic;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-subst {
+  color: #333;
+  font-weight: bold;
+}
+
+.hljs-number,
+.hljs-literal,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag .hljs-attr {
+  color: #008080;
+}
+
+.hljs-string,
+.hljs-doctag {
+  color: #d14;
+}
+
+.hljs-title,
+.hljs-section,
+.hljs-selector-id {
+  color: #900;
+  font-weight: bold;
+}
+
+.hljs-subst {
+  font-weight: normal;
+}
+
+.hljs-type,
+.hljs-class .hljs-title {
+  color: #458;
+  font-weight: bold;
+}
+
+.hljs-tag,
+.hljs-name,
+.hljs-attribute {
+  color: #000080;
+  font-weight: normal;
+}
+
+.hljs-regexp,
+.hljs-link {
+  color: #009926;
+}
+
+.hljs-symbol,
+.hljs-bullet {
+  color: #990073;
+}
+
+.hljs-built_in,
+.hljs-builtin-name {
+  color: #0086b3;
+}
+
+.hljs-meta {
+  color: #999;
+  font-weight: bold;
+}
+
+.hljs-deletion {
+  background: #fdd;
+}
+
+.hljs-addition {
+  background: #dfd;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
