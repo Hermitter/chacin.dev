@@ -21,7 +21,7 @@ module.exports = ({ markdownAST }, pluginOptions) => {
     let { depth } = node
 
     // Specify targeted header tags
-    if (depth !== 1 && depth !== 2) return
+    if (depth !== 1 && depth !== 2 && depth !== 3) return
 
     // Grab the innerText of the heading node
     let text = toString(node);
