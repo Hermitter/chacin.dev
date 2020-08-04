@@ -10,4 +10,14 @@ previewCardImage: "front_cover.png"
 how are you?
 pretty good?
 
-<img src="./front_cover.png"> </img>
+```js
+alert('click to copy 💾');
+```
+
+<img src="./front_cover.png"/>
+
+```shell{promptUser: carlos}{promptHost: localhost}
+cd /usr/local/etc
+cp php.ini php.ini.bak
+vi php.ini
+```

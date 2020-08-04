@@ -4,5 +4,10 @@
  * See: https://www.gatsbyjs.org/docs/browser-apis/
  */
 
-// Apply global CSS styling
+//////////////////
+// CSS Imports //
+// Global
 import "./src/styles/global.scss"
+// Code blocks
+require("prismjs/themes/prism-twilight.css");
+require("prismjs/plugins/command-line/prism-command-line.css");
