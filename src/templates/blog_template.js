@@ -1,32 +1,33 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { Link, graphql } from "gatsby";
 import Img from "gatsby-image"
+import { MDXRenderer } from "gatsby-plugin-mdx";
+import Clipboard from 'react-clipboard.js';
 
 import Layout from "../components/layout"
 
 export default function Template({
   data, // this prop will be injected by the GraphQL query below.
 }) {
-  const { markdownRemark } = data // data.markdownRemark holds your post data
-  const { frontmatter, html } = markdownRemark
+  const { mdx } = data; // data.mdx holds your post data
+  const { frontmatter, body } = mdx;
 
-  let post = data.markdownRemark;
-  let featuredImgFluid = post.frontmatter.featuredImage.childImageSharp.fluid;
-  let previewCardImgFluid = post.frontmatter.previewCardImage.childImageSharp.fluid;
+  let featuredImgFluid = frontmatter.featuredImage.childImageSharp.fluid;
+  let previewCardImgFluid = frontmatter.previewCardImage.childImageSharp.fluid;
 
   return (
     <Layout>
-      <div className="blog-post-container">
-        <div className="blog-post">
-          <h1>{frontmatter.title}</h1>
-          <h2>{frontmatter.date}</h2>
+      <div className="content">
+        <h1>{frontmatter.title}</h1>
+        <h2>{frontmatter.date}</h2>
 
-          <Img fluid={featuredImgFluid} />
-          <div
+        <Img fluid={featuredImgFluid} />
+        {/* <div
             className="blog-post-content"
-            dangerouslySetInnerHTML={{ __html: html }}
-          />
-        </div>
+            dangerouslySetInnerHTML={{ __html: body }}
+          /> */}
+
+        <MDXRenderer>{body}</MDXRenderer>
       </div>
     </Layout>
   )
@@ -34,8 +35,8 @@ export default function Template({
 
 export const pageQuery = graphql`
   query($slug: String!) {
-    markdownRemark(frontmatter: { slug: { eq: $slug } }) {
-      html
+    mdx(frontmatter: { slug: { eq: $slug } }) {
+      body
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
         slug

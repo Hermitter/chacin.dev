@@ -10,36 +10,41 @@ export default ({ data }) => <Layout>
 
   {/* Blog post preview cards */}
   <ul>
-    {data.allMarkdownRemark.edges.map((value, index) => {
-      return <li key={index.toString()}><Link to={value.node.frontmatter.slug}>{JSON.stringify(value.node.frontmatter.title)}</Link></li>
+    {data.allMdx.edges.map((value, index) => {
+      let metadata = value.node.frontmatter;
+      let previewImage = metadata.previewImage;
+
+      return <li key={index.toString()}>
+        <Link to={metadata.slug}>{JSON.stringify(metadata.title)}</Link>
+      </li>
     })}
   </ul>
 </Layout>
 
-export const blogQuery = graphql`{
-    allMarkdownRemark {
-        edges {
-            node {
-                frontmatter {
-                    date
-                    slug
-                    title
-                    featuredImage {
-                        childImageSharp {
-                          fluid(maxWidth: 800) {
-                            ...GatsbyImageSharpFluid
-                          }
-                        }
-                    }
-                    previewCardImage {
-                      childImageSharp {
-                        fluid(maxWidth: 800) {
-                          ...GatsbyImageSharpFluid
-                        }
-                      }
-                    }
-                }
-            }
-        }
+export const blogQuery = graphql`
+query {
+  site {
+    siteMetadata {
+      title
     }
-}`
+  }
+  allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
+    edges {
+      node {
+        frontmatter {
+          date(formatString: "MMMM DD, YYYY")
+          title
+          slug
+          previewCardImage {
+            childImageSharp {
+              fluid(maxWidth: 800) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+`
