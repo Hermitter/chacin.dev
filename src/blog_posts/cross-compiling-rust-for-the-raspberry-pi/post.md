@@ -5,7 +5,6 @@ title: "Cross Compiling Rust for the Raspberry Pi"
 featuredImage: "frontCover.png"
 previewCardImage: "poster.png"
 ---
-
 # Getting Started
 
 > If you want to automate this process with Docker, take a look at [cross](https://github.com/rust-embedded/cross)!
@@ -18,7 +17,7 @@ This guide covers how to set up your linux computer to `compile`, `upload`, and 
 
 Before moving on, make sure you have a Pi that's **connected to WiFi** and has **SSH enabled**.
 
-## Install the Standard Library for your Pi
+# Install the Standard Library for your Pi
 
 Assuming that [Rust](https://www.rust-lang.org/) is already installed, download the compatible standard library on your computer.
 
@@ -29,7 +28,7 @@ rustup target add arm-unknown-linux-gnueabihf
 rustup target add armv7-unknown-linux-gnueabihf
 ```
 
-## Download the GNU Toolchain
+# Download the GNU Toolchain
 
 > We're installing this from source to stay distro agnostic.
 
@@ -50,7 +49,7 @@ Unzip it, and add the binaries to your `$PATH`.
 export PATH="$HOME/PATH_TO_YOUR_DOWNLOAD/PATH_TO_TOOLCHAIN_FOLDER/bin:$PATH"
 ```
 
-## Create a Cargo Project
+# Create a Cargo Project
 
 It's almost ready! All that's left is to create and configure a cargo project.
 
@@ -79,7 +78,7 @@ linker = "arm-none-linux-gnueabihf-gcc"
 # rustflags = ["-C", "linker=arm-none-linux-gnueabihf-gcc"]
 ```
 
-## Run your Binary on the Pi
+# Run your Binary on the Pi
 
 Below is a quick example workflow you can use to quickly deploy your project on a Pi.
 

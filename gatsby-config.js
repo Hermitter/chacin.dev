@@ -2,6 +2,7 @@ let markdown_plugin = {
   resolve: `gatsby-transformer-remark`,
   options: {
     plugins: [
+      `gatsby-remark-header-anchors`,
       {
         resolve: `gatsby-remark-prismjs`,
         options: {
