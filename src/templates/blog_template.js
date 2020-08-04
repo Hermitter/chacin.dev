@@ -31,6 +31,7 @@ export default function Template({
     </Layout>
   )
 }
+
 export const pageQuery = graphql`
   query($slug: String!) {
     markdownRemark(frontmatter: { slug: { eq: $slug } }) {
