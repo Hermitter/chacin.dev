@@ -109,14 +109,7 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `blog-images`,
-        path: `${__dirname}/src/blog_posts`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `markdown-blog-post`,
+        name: `blog`,
         path: `${__dirname}/src/blog_posts`,
       },
     },
