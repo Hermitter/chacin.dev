@@ -14,7 +14,7 @@ export default () => <Layout>
     <h1>Carlos Chacin</h1>
     <h4>Software Developer</h4>
 
-    <p>Welcome to my site! Feel free to take off your shoes and make youself at home.</p>
+    <p>Welcome to my site! Feel free to take off your shoes and make yourself at home.</p>
 
     <img style={{ padding: "5px" }} height="200" width="200" src="/logos/twitter.svg"></img>
     <img style={{ padding: "5px" }} height="200" width="200" src="/logos/github.svg"></img>

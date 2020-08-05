@@ -2,7 +2,6 @@ import React from "react"
 import { Link, graphql } from "gatsby";
 import Img from "gatsby-image"
 import { MDXRenderer } from "gatsby-plugin-mdx";
-import Clipboard from 'react-clipboard.js';
 
 import Layout from "../components/layout"
 
@@ -22,10 +21,6 @@ export default function Template({
         <h2>{frontmatter.date}</h2>
 
         <Img fluid={featuredImgFluid} />
-        {/* <div
-            className="blog-post-content"
-            dangerouslySetInnerHTML={{ __html: body }}
-          /> */}
 
         <MDXRenderer>{body}</MDXRenderer>
       </div>
