@@ -16,22 +16,25 @@
   "dependencies": {
     "@mdx-js/mdx": "^1.6.16",
     "@mdx-js/react": "^1.6.16",
+    "@mdx-js/tag": "^0.20.3",
     "gatsby": "^2.27.1",
     "gatsby-image": "^2.4.14",
     "gatsby-plugin-feed-mdx": "^1.0.1",
     "gatsby-plugin-manifest": "^2.4.14",
-    "gatsby-plugin-mdx": "^1.2.33",
+    "gatsby-plugin-mdx": "^1.5.0",
     "gatsby-plugin-offline": "^3.2.13",
     "gatsby-plugin-react-helmet": "^3.3.6",
     "gatsby-plugin-sass": "^2.3.12",
     "gatsby-plugin-sharp": "^2.6.24",
     "gatsby-remark-autolink-headers": "^2.3.11",
+    "gatsby-remark-copy-linked-files": "^2.5.0",
     "gatsby-remark-embed-snippet": "^4.3.13",
     "gatsby-remark-images": "^3.3.23",
     "gatsby-remark-prismjs": "^3.5.10",
     "gatsby-remark-responsive-iframe": "^2.4.12",
     "gatsby-source-filesystem": "^2.3.23",
     "gatsby-transformer-sharp": "^2.5.12",
+    "mdx-utils": "^0.2.0",
     "node-sass": "^4.14.1",
     "prism-react-renderer": "^0.2.0",
     "prismjs": "^1.20.0",
@@ -39,7 +42,9 @@
     "react": "^16.12.0",
     "react-clipboard.js": "^2.0.16",
     "react-dom": "^16.12.0",
-    "react-helmet": "^6.1.0"
+    "react-dom-confetti": "^0.2.0",
+    "react-helmet": "^6.1.0",
+    "react-live": "^2.2.0"
   },
   "devDependencies": {
     "prettier": "2.0.5"

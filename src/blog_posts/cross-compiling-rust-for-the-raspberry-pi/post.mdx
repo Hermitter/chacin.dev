@@ -5,6 +5,7 @@ title: "Cross Compiling Rust for the Raspberry Pi"
 featuredImage: "frontCover.png"
 previewCardImage: "poster.png"
 ---
+
 # Getting Started
 
 > If you want to automate this process with Docker, take a look at [cross](https://github.com/rust-embedded/cross)!
@@ -21,7 +22,7 @@ Before moving on, make sure you have a Pi that's **connected to WiFi** and has *
 
 Assuming that [Rust](https://www.rust-lang.org/) is already installed, download the compatible standard library on your computer.
 
-```shell{outputLines: 1,3}{promptUser: carlos}{promptHost: computer}
+```bash
 # Supports Pi 0/1
 rustup target add arm-unknown-linux-gnueabihf
 # Supports Pi 2/3/4
@@ -53,7 +54,7 @@ export PATH="$HOME/PATH_TO_YOUR_DOWNLOAD/PATH_TO_TOOLCHAIN_FOLDER/bin:$PATH"
 
 It's almost ready! All that's left is to create and configure a cargo project.
 
-```shell{promptUser: carlos}{promptHost: computer}
+```bash
 cargo new pi_project
 mkdir pi_project/.cargo
 cd ./pi_project/.cargo
@@ -82,7 +83,7 @@ linker = "arm-none-linux-gnueabihf-gcc"
 
 Below is a quick example workflow you can use to quickly deploy your project on a Pi.
 
-```shell {outputLines: 3-5,7-8,10-11}{promptUser: carlos}{promptHost: computer}
+```bash
 PI_IP=192.168.2.159 # Be sure to change this!
 TARGET=armv7-unknown-linux-gnueabihf # Pi 2/3/4
 #TARGET=arm-unknown-linux-gnueabihf # Pi 0/1
