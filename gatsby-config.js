@@ -9,7 +9,8 @@ let markdown_plugin = {
       {
         resolve: `gatsby-remark-autolink-headers`,
         options: {
-          offsetY: 104,
+          offsetY: 140,
+          className: "blog-header-anchor-link",
         },
       },
       // Old code block prism plugin.

@@ -3,6 +3,7 @@ import Highlight, { defaultProps } from "prism-react-renderer";
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from "react-live";
 import theme from "prism-react-renderer/themes/vsDark";
 import Confetti from "react-dom-confetti";
+import "./styles.scss";
 
 const config = {
   angle: 90,
@@ -68,7 +69,6 @@ const Button = (props) => (
       margin: "8px",
       padding: "8px 12px",
       background: "#E2E8F022",
-      color: "white",
       // borderRadius: "8px",
       cursor: "pointer",
       color: "#E2E8F0",
@@ -93,7 +93,10 @@ export const Code = ({ codeString, children, language, ...props }) => {
     );
   } else {
     return (
-      <Wrapper className="gatsby-highlight" data-language={language}>
+      <Wrapper
+        className={`gatsby-highlight language-${language}`}
+        data-language={language}
+      >
         <Highlight
           {...defaultProps}
           code={codeString}
@@ -108,6 +111,7 @@ export const Code = ({ codeString, children, language, ...props }) => {
                   ...style,
                   padding: "2rem",
                   position: "relative",
+                  border: "none",
                 }}
               >
                 {tokens.map((line, i) => (
