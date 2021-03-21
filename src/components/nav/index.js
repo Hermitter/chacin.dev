@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "gatsby";
+import "./styles.scss";
 
 export default () => (
-  <div>
+  <div id="nav">
     <ul>
       <li><Link to="/">Home</Link></li>
 
