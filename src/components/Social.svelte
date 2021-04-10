@@ -5,7 +5,7 @@
     let socials = [
         {icon: faLinkedin, color: "#007bb5", link: "https://www.linkedin.com/in/carlos-a-chacin/"},
         {icon: faGithub,   color: "black", link: "https://github.com/Hermitter"},
-        {icon: faTwitter,  color: "#55ACEE", link: "https://twitter.com/HermitterC"},
+        {icon: faTwitter,  color: "#55ACEE", link: "https://twitter.com/ccMeToday"},
     ];
 </script>
 
