@@ -7,9 +7,9 @@
 </script>
 
 <script>
-export let posts;
-import { faClock, faCalendar } from '@fortawesome/free-regular-svg-icons';
-import Icon from 'svelte-awesome/components/Icon.svelte'
+	export let posts;
+	import { faClock, faCalendar } from '@fortawesome/free-regular-svg-icons';
+	import Icon from 'svelte-awesome/components/Icon.svelte'
 </script>
 
 <style>
@@ -45,7 +45,7 @@ import Icon from 'svelte-awesome/components/Icon.svelte'
 
 	li {
 		max-width: 230px;
-		border-color: rgb(255,62,0);
+		border-color: rgb(255, 62, 0);
 		border-style: solid;
 		border-width: 1px;
 		border-radius: 0 0 2% 2%;
@@ -57,7 +57,7 @@ import Icon from 'svelte-awesome/components/Icon.svelte'
 	}
 
 	li:hover {
-		box-shadow: 0px 0px 0px 2px rgb(255,62,0)
+		box-shadow: 0px 0px 0px 2px rgb(255, 62, 0)
 	}
 
 	img {
@@ -66,9 +66,9 @@ import Icon from 'svelte-awesome/components/Icon.svelte'
 		height: 180px;
 	}
 
-	.meta-data p{
+	.meta-data p {
 		display: block;
-		margin:0;
+		margin: 0;
 		font-size: 15px;
 		padding-left: 10px;
 		padding-right: 10px;
@@ -98,14 +98,13 @@ import Icon from 'svelte-awesome/components/Icon.svelte'
 		margin: auto;
 		max-width: 56em;
 	}
-
 </style>
 
 <svelte:head>
 	<title>Blog | Carlos Chacin</title>
 	<meta name="description" content="Table of contents for each developer tutorial available">
 	<meta name="keywords" content="Blog,Rust,Node,Linux,JavaScript,Web,Raspberry pi">
-  	<meta name="author" content="co-authored by Carlos Chacin, Hermitter">
+	<meta name="author" content="co-authored by Carlos Chacin, Hermitter">
 </svelte:head>
 
 
@@ -114,19 +113,23 @@ import Icon from 'svelte-awesome/components/Icon.svelte'
 	<!-- For Each Post -->
 	<ul>
 		{#each posts as post}
-			<li>
-				<a draggable="false" rel='prefetch' href='blog/{post.slug}'>
-					<img alt='{post.title}' src='{post.poster}'/><br/>
-					<h2>{post.title}</h2>
-					
-					<div class="meta-data">
-						<p><span class="icon-vAlign-fix"><Icon data={faCalendar}/></span> {post.date}</p>
-						<p><span class="icon-vAlign-fix"><Icon data={faClock}/></span> {post.readingTime}</p>
-					</div>
+		<li>
+			<a draggable="false" rel='prefetch' href='blog/{post.slug}'>
+				<img alt='{post.title}' src='{post.poster}' /><br />
+				<h2>{post.title}</h2>
 
-					<p class="post-desc">{post.description}</p>
-				</a>
-			</li>
+				<div class="meta-data">
+					<p><span class="icon-vAlign-fix">
+							<Icon data={faCalendar} />
+						</span> {post.date}</p>
+					<p><span class="icon-vAlign-fix">
+							<Icon data={faClock} />
+						</span> {post.readingTime}</p>
+				</div>
+
+				<p class="post-desc">{post.description}</p>
+			</a>
+		</li>
 		{/each}
 	</ul>
 </div>

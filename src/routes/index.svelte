@@ -1,9 +1,11 @@
 <script>
-import Social from '../components/Social.svelte';
+	import Social from '../components/Social.svelte';
 </script>
 
 <style>
-	h1, figure, p {
+	h1,
+	figure,
+	p {
 		text-align: center;
 		margin: 0 auto;
 	}
@@ -37,16 +39,34 @@ import Social from '../components/Social.svelte';
 	}
 
 	#profile-pic {
+		width: 330px;
+		height: 330px;
 		border-radius: 50%;
-		-webkit-animation:spin 150s linear infinite;
-		-moz-animation:spin 150s linear infinite;
-		animation:spin 150s linear infinite;
+		-webkit-animation: spin 150s linear infinite;
+		-moz-animation: spin 150s linear infinite;
+		animation: spin 150s linear infinite;
 	}
-	@-moz-keyframes spin { 100% { -moz-transform: rotate(180deg); } }
-	@-webkit-keyframes spin { 100% { -webkit-transform: rotate(180deg); } }
-	@keyframes spin { 100% { -webkit-transform: rotate(180deg); transform:rotate(360deg); } }
 
-	#title-caption{
+	@-moz-keyframes spin {
+		100% {
+			-moz-transform: rotate(180deg);
+		}
+	}
+
+	@-webkit-keyframes spin {
+		100% {
+			-webkit-transform: rotate(180deg);
+		}
+	}
+
+	@keyframes spin {
+		100% {
+			-webkit-transform: rotate(180deg);
+			transform: rotate(360deg);
+		}
+	}
+
+	#title-caption {
 		text-align: center;
 		margin: 0 0 30px 0;
 	}
@@ -54,17 +74,17 @@ import Social from '../components/Social.svelte';
 
 <svelte:head>
 	<title>Carlos Chacin</title>
-	<meta name="description" content="Hermitter's personal website and blog for developer tutorials">
+	<meta name="description" content="Carlos' personal website and blog for tech tutorials">
 	<meta name="keywords" content="portfolio,Developer,Blog,Website">
-  	<meta name="author" content="co-authored by Carlos Chacin, Hermitter">
+	<meta name="author" content="co-authored by Carlos Chacin, Hermitter">
 </svelte:head>
 
 <h1>Carlos Chacin</h1>
 <p id="title-caption">Software Developer</p>
 
 <figure>
-	<img id="profile-pic" alt='Carlos' src='headshot.jpg'>
+	<img id="profile-pic" alt='Carlos' src='headshot.png'>
 	<p><strong>A simple site to keep my notes</strong></p>
 </figure>
 
-<Social/>
+<Social />

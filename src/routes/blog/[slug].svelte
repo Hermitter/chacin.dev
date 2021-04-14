@@ -17,11 +17,11 @@
 	// html string from markdown
 	export let post;
 	// TODO: remove hard coded hostname
-	let post_url = "https://chacin.dev/blog/"+post.title.split(" ").join("-").toLowerCase();
+	let post_url = "https://chacin.dev/blog/" + post.title.split(" ").join("-").toLowerCase();
 
 	// code block theme
 	import "highlight.js/styles/dracula.css";
-	
+
 	// Disqus comments
 	import Comments from '../../components/Comments.svelte';
 
@@ -44,7 +44,7 @@
 		position: relative;
 		width: 100%;
 	}
-	
+
 	/*
 		By default, CSS is locally scoped to the component,
 		and any unused styles are dead-code-eliminated.
@@ -60,7 +60,7 @@
 		z-index: 100;
 	}
 
-	.content :global(p img)  {
+	.content :global(p img) {
 		display: block;
 		margin-right: auto;
 		margin-left: auto;
@@ -92,7 +92,7 @@
 		font-weight: 500;
 	}
 
-	
+
 	.content :global(code) {
 		background: rgb(24, 26, 27);
 		font-family: menlo, inconsolata, monospace;
@@ -110,7 +110,7 @@
 		overflow-x: auto;
 		border-style: solid;
 		border-width: 1px;
-		border-color:#ff3e00;
+		border-color: #ff3e00;
 	}
 
 	.content :global(pre) :global(code) {
@@ -129,7 +129,7 @@
 	.content :global(img) {
 		max-width: 100%;
 	}
-	
+
 	.content :global(blockquote) {
 		margin: 0;
 		background: #1c1c1c;
@@ -145,9 +145,9 @@
 		font-size: 16px;
 	}
 
-	.meta-data p{
+	.meta-data p {
 		display: block;
-		margin:0;
+		margin: 0;
 		font-size: 15px;
 		padding-left: 10px;
 		padding-right: 10px;
@@ -184,13 +184,24 @@
 
 	/* Safari 4.0 - 8.0 */
 	@-webkit-keyframes title-shadow {
-		from {box-shadow: 0px -1733px 300px 800px #ff3e00d9;}
-		to {box-shadow: 0px -733px 300px 800px #ff3e00d9;}
+		from {
+			box-shadow: 0px -1733px 300px 800px #ff3e00d9;
+		}
+
+		to {
+			box-shadow: 0px -733px 300px 800px #ff3e00d9;
+		}
 	}
+
 	/* Standard syntax */
 	@keyframes title-shadow {
-		from {box-shadow: 0px -1733px 300px 800px #ff3e00d9;}
-		to {box-shadow: 0px -733px 300px 800px #ff3e00d9;}
+		from {
+			box-shadow: 0px -1733px 300px 800px #ff3e00d9;
+		}
+
+		to {
+			box-shadow: 0px -733px 300px 800px #ff3e00d9;
+		}
 	}
 
 	#front-cover {
@@ -209,11 +220,10 @@
 	}
 
 	#header {
-		position:relative;
+		position: relative;
 		margin: auto;
 		max-width: 1196px;
 	}
-
 </style>
 
 <svelte:head>
@@ -221,7 +231,7 @@
 	<meta name="description" content={post.description}>
 	<meta name="keywords" content={post.keywords}>
 	<meta name="author" content="co-authored by Carlos Chacin, Hermitter">
-	
+
 	<meta property="og:title" content={post.title}>
 	<meta property="og:url" content={post_url}>
 	<meta property="og:type" content="blog">
@@ -233,12 +243,16 @@
 
 <div id="header">
 	<h1>{post.title}</h1>
-	<img id="front-cover" src={post.frontCover} alt="blog post cover image"/>
+	<img id="front-cover" src={post.frontCover} alt="blog post cover image" />
 
-	<br/>				
+	<br />
 	<div class="meta-data">
-		<p><span class="icon-vAlign-fix"><Icon data={faCalendar}/></span> {post.date}</p>
-		<p><span class="icon-vAlign-fix"><Icon data={faClock}/></span> {post.printReadingTime}</p>
+		<p><span class="icon-vAlign-fix">
+				<Icon data={faCalendar} />
+			</span> {post.date}</p>
+		<p><span class="icon-vAlign-fix">
+				<Icon data={faClock} />
+			</span> {post.printReadingTime}</p>
 	</div>
 </div>
 
@@ -249,5 +263,5 @@
 </div>
 
 <div id="comments">
-<Comments page_url={post_url} page_identifier={post_url}/>
+	<Comments page_url={post_url} page_identifier={post_url} />
 </div>
