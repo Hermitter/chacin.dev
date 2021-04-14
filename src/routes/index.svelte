@@ -39,8 +39,6 @@
 	}
 
 	#profile-pic {
-		width: 330px;
-		height: 330px;
 		border-radius: 50%;
 		-webkit-animation: spin 150s linear infinite;
 		-moz-animation: spin 150s linear infinite;
