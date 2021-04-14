@@ -3,9 +3,12 @@
 
 [chacin.dev](https://chacin.dev) is my personal website & Markdown blog for personal tutorials I want to keep track of in the future.
     
-# Todo
-- [ ] Add more Markdown features
-- [ ] Live reloading for `posts` folder
+# HTML Todo
+- [ ] Navigation
+- [ ] Home Page
+- [ ] Blog Cards
+- [ ] Blog Posts
+- [ ] About
 
 # Development
 ```bash
