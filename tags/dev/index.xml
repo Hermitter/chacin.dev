@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Dev on Carlos Chacin</title>
-    <link>https://dev.weirdgravity.com/tags/dev/</link>
+    <link>https://chacin.dev/tags/dev/</link>
     <description>Recent content in Dev on Carlos Chacin</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 02 Jul 2025 15:20:22 -0400</lastBuildDate>
-    <atom:link href="https://dev.weirdgravity.com/tags/dev/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://chacin.dev/tags/dev/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Getting Started with WebAssembly and Rust</title>
-      <link>https://dev.weirdgravity.com/posts/getting-started-with-webassembly-and-rust/</link>
+      <link>https://chacin.dev/posts/getting-started-with-webassembly-and-rust/</link>
       <pubDate>Sun, 26 Jul 2020 09:00:00 -0700</pubDate>
-      <guid>https://dev.weirdgravity.com/posts/getting-started-with-webassembly-and-rust/</guid>
+      <guid>https://chacin.dev/posts/getting-started-with-webassembly-and-rust/</guid>
       <description>An overview on WebAssembly for building and running Rust programs targeting web browsers</description>
     </item>
     <item>
       <title>Cross Compiling Rust for the Raspberry Pi</title>
-      <link>https://dev.weirdgravity.com/posts/cross-compiling-rust-for-the-raspberry-pi/</link>
+      <link>https://chacin.dev/posts/cross-compiling-rust-for-the-raspberry-pi/</link>
       <pubDate>Tue, 28 Jan 2020 09:00:00 -0700</pubDate>
-      <guid>https://dev.weirdgravity.com/posts/cross-compiling-rust-for-the-raspberry-pi/</guid>
+      <guid>https://chacin.dev/posts/cross-compiling-rust-for-the-raspberry-pi/</guid>
       <description>Use a faster computer to compile a Rust programs and then send that binary over the network to run it on a Raspberry Pi</description>
     </item>
   </channel>
