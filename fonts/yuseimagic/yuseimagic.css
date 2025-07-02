@@ -1,0 +1,7 @@
+@font-face {
+    font-family: "yuseimagic";
+    src:
+        url('YuseiMagicLatinCore-Regular.woff2') format("woff2"),
+        url('YuseiMagicLatinCore-Regular.ttf') format('truetype');
+    font-display: swap;
+}

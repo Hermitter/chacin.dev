@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<link rel="icon" href="/favicon.ico" type="image/x-icon" />
+
+<meta name="description" content="Learn how to build and run Rust programs for web browsers"><meta name="author" content="Carlos Chacin">
+
+
+<meta name="apple-mobile-web-app-title" content="Chacin.dev">
+
+
+
+
+
+
+<link rel="apple-touch-icon" href="https://chacin.dev/imgs/icon.png">
+<link rel="apple-touch-icon" sizes="152x152" href="https://chacin.dev/imgs/icon_hu_b7fb185e7aaaf9aa.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://chacin.dev/imgs/icon_hu_25434a148df59985.png">
+<link rel="apple-touch-icon" sizes="167x167" href="https://chacin.dev/imgs/icon_hu_141628a535d8106.png">
+<link rel="icon" sizes="196x196" href="https://chacin.dev/imgs/icon_hu_49bacd670d4eaccb.png">
+<link rel="icon" sizes="512x512" href="https://chacin.dev/imgs/icon_hu_db55f681fcb2e5e1.png">
+
+<meta property="og:url" content="https://chacin.dev/posts/getting-started-with-webassembly-and-rust/">
+<meta property="og:type" content="blog"><meta property="og:title" content="Getting Started with WebAssembly and Rust"><meta property="og:description" content="Learn how to build and run Rust programs for web browsers"><meta property="og:image" content="https:/chacin.dev/posts/getting-started-with-webassembly-and-rust/thumbnail.png"><title>Getting Started with WebAssembly and Rust | Carlos Chacin</title>
+
+    <link rel="preload" href="/css/bundle.css" as="style" />
+        <link rel="stylesheet" href="/css/bundle.min.f8e661f16466ef4298e72c2fe5967973aacf8f5aa54e647210108a4c3718d8a7.css" integrity="sha256-&#43;OZh8WRm70KY5ywv5ZZ5c6rPj1qlTmRyEBCKTDcY2Kc=" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/remixicon/remixicon.css" as="style" />
+        <link rel="stylesheet" href="/fonts/remixicon/remixicon.min.05b7739faffbaa511b1f279e3d0f8657d2fc6023a32dfb427a225b68a5a2570f.css" integrity="sha256-Bbdzn6/7qlEbHyeePQ&#43;GV9L8YCOjLftCeiJbaKWiVw8=" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/yuseimagic/yuseimagic.css" as="style" />
+        <link rel="stylesheet" href="/fonts/yuseimagic/yuseimagic.min.25d68f1b1308ef212b81319db93de8bb401028827874a394c71c6f5c5a930720.css" integrity="sha256-JdaPGxMI7yErgTGduT3ou0AQKIJ4dKOUxxxvXFqTByA=" crossorigin="anonymous">
+  
+  
+  
+  
+  
+
+
+
+</head>
+<body>
+    
+      <header>
+        <div class="inner-header">
+    
+<nav>
+    <a class="header-title" href="/">Carlos Chacin</a>
+
+  <ul>
+<li>
+  <a aria-current="true" class="ancestor" href="/posts/">Posts</a>
+</li>
+<li>
+  <a href="/tags/">Tags</a>
+</li>
+  </ul>
+</nav>
+</div>
+      </header>
+        <main>
+          
+<div class="post">
+  <h1>Getting Started with WebAssembly and Rust</h1>
+
+  
+  
+  <img class="banner" src="/posts/getting-started-with-webassembly-and-rust/banner.jpg">
+
+  <div class="metadata">
+    
+    
+    <ul>
+      <li><i class="ri-calendar-fill "></i> <time datetime="2020-07-26T09:00:00-07:00">Posted: July 26, 2020</time></li>
+      <li><i class="ri-timer-fill "></i> Read Est: 12 minutes</li>
+
+      <li>
+        <div class="toc-wrapper">     
+          <details>
+            <summary><i class="ri-book-fill"></i> <i class="ri-book-open-fill"></i> Table of Contents</summary>
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#understanding-webassembly">Understanding WebAssembly</a></li>
+    <li><a href="#downloading-the-tools">Downloading the Tools</a></li>
+    <li><a href="#creating--building-a-wasm-package">Creating &amp; Building a Wasm Package</a></li>
+    <li><a href="#running-wasm-in-the-browser">Running Wasm in the Browser</a></li>
+    <li><a href="#rust-and-javascript-interop">Rust and JavaScript Interop</a>
+      <ol>
+        <li><a href="#exporting-common-types">Exporting Common Types</a></li>
+        <li><a href="#exporting-structs--enums">Exporting Structs &amp; Enums</a></li>
+        <li><a href="#manually-creating-bindings">Manually Creating Bindings</a></li>
+        <li><a href="#interacting-with-web-apis">Interacting With Web APIs</a></li>
+      </ol>
+    </li>
+    <li><a href="#closing-thoughts">Closing Thoughts</a></li>
+  </ol>
+</nav>
+          </details> 
+        </div>
+      </li>
+
+    </ul>
+  </div>
+
+  <div class="content">
+    <blockquote>
+<p>I originally wrote this for <a href="https://blog.logrocket.com/getting-started-with-webassembly-and-rust/">LogRocket</a> and posted it here with their permission.</p></blockquote>
+<p>This guide is an introduction on how to set up and work with a Rust WebAssembly environment. As for what you need to know, a basic understanding of Rust and web development should suffice.</p>
+<p>I initially picked up Rust because of the fantastic work the team has done in supporting and pushing WebAssembly. Their <a href="https://rustwasm.github.io/docs/book/">official documentation</a> is a great introduction for building an example project!</p>
+<h1 id="understanding-webassembly">Understanding WebAssembly</h1>
+<p>WebAssembly (also known as Wasm) is a binary instruction format that most browsers have started to support. This enables languages, such as Rust, C, C++ Go, etc., to be compiled and ran in a web browser.</p>
+<p>To clear up some misunderstandings, WebAssembly is <strong>not</strong> a replacement for JavaScript (also known as JS). Rather, it should be thought of as a way of offloading computationally heavy tasks to a more suitable language. Another benefit of this is that existing projects and libraries can now be ported to the web without needing to suffer through rewriting them in JS and the performance hits that come with that.</p>
+<p>For those interested in taking the Wasm specification outside the web, The <a href="https://wasi.dev/">WebAssembly System Interface</a> (WASI) may be of interest to you!</p>
+<h1 id="downloading-the-tools">Downloading the Tools</h1>
+<p>With everything out of the way, we can start setting up our environment! Be sure to have the following installed on your computer.</p>
+<ul>
+<li><a href="https://www.rust-lang.org/tools/install">Rust</a> (Ideally, an up to date version)</li>
+<li>Modern Web Browser (Internet Explorer doesn&rsquo;t count!)</li>
+<li>Your favorite text editor</li>
+<li>A way to host a simple webserver (to avoid the browser nagging about cross-origin requests being blocked)
+<ul>
+<li>If you have Python installed, there&rsquo;s a nifty command for this!</li>
+</ul>
+</li>
+<li><a href="https://rustwasm.github.io/wasm-pack/installer/">wasm-pack CLI</a></li>
+</ul>
+<p>Why do we need wasm-pack? To reference from Ashley Williams&rsquo; <a href="https://hacks.mozilla.org/2018/04/hello-wasm-pack/">Hello wasm-pack</a> blog post,</p>
+<blockquote>
+<p>wasm-pack is a tool for assembling and packaging Rust crates that target WebAssembly. These packages can be published to the npm Registry and used alongside other packages. This means you can use them side-by-side with JS and other packages, and in many kinds of applications.</p></blockquote>
+<p>For those that don&rsquo;t know, Rust crates are close to what packages and libraries are for other languages. Crates work directly with Rust&rsquo;s build system and package manager Cargo.</p>
+<h1 id="creating--building-a-wasm-package">Creating &amp; Building a Wasm Package</h1>
+<p>To create a new Wasm project, we can utilize the <code>wasm-pack</code> CLI. This should be familiar for those that create Rust projects through the <code>cargo</code> CLI.</p>
+
+
+
+
+
+
+
+
+<div class="code-block">
+    <div class="code-block-tabs">
+        
+        
+            <div class="code-block-lang">
+                <p>sh</p>
+            </div>
+        
+        
+        
+    </div>
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">wasm-pack new hello-wasm
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> hello-wasm</span></span></code></pre></div>
+</div><p>The generated project is essentially a Rust library with boilerplate Wasm code.</p>
+<img src="/posts/getting-started-with-webassembly-and-rust/images/project_file_structure.png" alt="project directory from the wasm-pack build command"><p>Looking at the commands available in wasm-pack, it&rsquo;s clear that there&rsquo;s a focus for creating and publishing npm packages.</p>
+
+
+
+
+
+
+
+
+<div class="code-block">
+    <div class="code-block-tabs">
+        
+        
+        
+        
+    </div>
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">WASM-PACK SUBCOMMANDS:
+</span></span><span class="line"><span class="cl">    build      🏗️  build your npm package!
+</span></span><span class="line"><span class="cl">    help       Prints this message or the help of the given subcommand(s)
+</span></span><span class="line"><span class="cl">    login      👤  Add an npm registry user account! (aliases: adduser, add-user)
+</span></span><span class="line"><span class="cl">    new        🐑 create a new project with a template
+</span></span><span class="line"><span class="cl">    pack       🍱  create a tar of your npm package but don&#39;t publish!
+</span></span><span class="line"><span class="cl">    publish    🎆  pack up your npm package and publish!
+</span></span><span class="line"><span class="cl">    test       👩‍🔬  test your wasm!</span></span></code></pre></div>
+</div><p>Although this is great for projects that have bundlers (Webpack, Rollup, etc.), we&rsquo;re aiming for simple setup where we can import our Wasm binary in an HTML file. Thankfully, wasm-pack <code>build</code> has an argument to target other environments!</p>
+
+
+
+
+
+
+
+
+<div class="code-block">
+    <div class="code-block-tabs">
+        
+        
+        
+        
+    </div>
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">-t, --target &lt;target&gt;        Sets the target environment. [possible values: bundler, nodejs, web, no-modules]
+</span></span><span class="line"><span class="cl">                                [default: bundler]</span></span></code></pre></div>
+</div><p>The <code>web</code> target is exactly what we want! Once built, the output will create a <code>pkg</code> folder with multiple files that serve as the glue code between Wasm and JS. By the end of it, our Wasm binary will be exposed through a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules">JavaScript Module</a>.</p>
+
+
+
+
+
+
+
+
+<div class="code-block">
+    <div class="code-block-tabs">
+        
+        
+            <div class="code-block-lang">
+                <p>sh</p>
+            </div>
+        
+        
+        
+    </div>
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">wasm-pack build --target web</span></span></code></pre></div>
+</div><h1 id="running-wasm-in-the-browser">Running Wasm in the Browser</h1>
+<p>With the Rust code compiled to Wasm, we can begin going over how call it from JS. Start by creating a file called <code>index.html</code> in root of the project, and add the following:</p>
+
+
+
+
+
+
+
+
+<div class="code-block">
+    <div class="code-block-tabs">
+        
+        
+            <div class="code-block-lang">
+                <p>html</p>
+            </div>
+        
+        
+        
+    </div>
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&#34;utf-8&#34;</span> <span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>My Wasm Project<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;module&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="c1">// Importing WASM for the web target requires us to call an init function provided by the default module export.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="c1">// This is planned to be changed in the future.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="kr">import</span> <span class="p">{</span> <span class="k">default</span> <span class="nx">as</span> <span class="nx">wasm</span><span class="p">,</span> <span class="nx">greet</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&#34;./pkg/hello_wasm.js&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="nx">wasm</span><span class="p">().</span><span class="nx">then</span><span class="p">((</span><span class="nx">module</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// The boiler plate project comes with a `greet` function that calls:
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">// `alert(&#34;Hello, hello-wasm!&#34;);`
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">greet</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">      <span class="p">});</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span></span></span></code></pre></div>
+</div><p>For security reasons, browsers tend to not let you import local resources from <code>file://</code>. This prevents us from importing the Wasm binary, but an easy solution is to just start a quick webserver.</p>
+<p>If you have Python installed, you can use one of the following commands for this:</p>
+<ul>
+<li>Python 3: <code>python -m http.server 8000</code></li>
+<li>Python 2: <code>python -m SimpleHTTPServer 8000</code></li>
+</ul>
+<p>We now have Rust code ready to run in a browser! Visit http://localhost:8000 to see it live. It should be a blank page with an alert.</p>
+<img src="/posts/getting-started-with-webassembly-and-rust/images/wasm_hello_world.png" alt="Wasm project loaded on a webpage"><h1 id="rust-and-javascript-interop">Rust and JavaScript Interop</h1>
+<blockquote>
+<p>For the following code examples, you can edit the <code>index.html</code> &amp; <code>src/lib.rs</code> files to play around with the new changes. <strong>Remember to build each time you edit your Rust code!</strong></p></blockquote>
+<p>Now that you&rsquo;re familiar with building a project, it&rsquo;s time to go over how to work with it. By default, Rust doesn&rsquo;t directly have the ability to communicate with JS or Web APIs. This functionality is enabled through <a href="https://rustwasm.github.io/docs/wasm-bindgen/">wasm-bindgen</a>. The project itself consists of multiple crates and a CLI tool. We&rsquo;ve actually been using its CLI through <code>wasm-pack</code>!</p>
+<p>Crates from wasm-bindgen:</p>
+<ul>
+<li><a href="https://docs.rs/wasm-bindgen/">wasm-bindgen</a>: Generates bindings and glue code between Wasm and JS.</li>
+<li><a href="https://docs.rs/web-sys/">web-sys</a>: Bindings for Web APIs.</li>
+<li><a href="https://docs.rs/js-sys/">js-sys</a>: Bindings for JavaScript&rsquo;s standard, built-in objects, including their methods and properties.</li>
+<li><a href="https://docs.rs/wasm-bindgen-futures">wasm_bindgen_futures</a>: Facilitates converting between
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">JavaScript Promises</a> to <a href="https://docs.rs/futures/0.3.5/futures/">Rust Futures</a>.</li>
+</ul>
+<h2 id="exporting-common-types">Exporting Common Types</h2>
+<p>By importing <code>wasm_bindgen::prelude::*</code>, we&rsquo;re given powerful abstractions for talking to JS. Here are some I want to highlight:</p>
+<ul>
+<li><code>#[wasm_bindgen]</code>: Macro that automatically handles most of our bindings between Rust and JS.</li>
+<li><code>JsValue</code>: A representation for a data owned by JS.</li>
+<li><code>UnwrapThrowExt</code>: A trait extension for
+<code>Option&lt;T&gt;</code> and <code>Result&lt;T, E&gt;</code>.</li>
+</ul>
+<p>Assuming you&rsquo;re editing <code>src/lib.rs</code>, the examples below show how to receive/return values with Wasm. Note that variables with an underscore (like <code>_c</code>) is a Rust convention for expressing that it&rsquo;s unused.</p>
+
+
+
+
+
+
+
+
+<div class="code-block">
+    <div class="code-block-tabs">
+        
+        
+            <div class="code-block-lang">
+                <p>rust</p>
+            </div>
+        
+        
+        
+    </div>
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-rust" data-lang="rust"><span class="line"><span class="cl"><span class="k">use</span><span class="w"> </span><span class="n">wasm_bindgen</span>::<span class="n">prelude</span>::<span class="o">*</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// JS doesn&#39;t have a chars type which means:
+</span></span></span><span class="line"><span class="cl"><span class="c1">// - The _c argument is the first char of a JS string.
+</span></span></span><span class="line"><span class="cl"><span class="c1">// - The char returned will be a JS string.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="cp">#[wasm_bindgen]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span> <span class="nf">char_example</span><span class="p">(</span><span class="n">_c</span>: <span class="kt">char</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="kt">char</span> <span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="sc">&#39;🚀&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cp">#[wasm_bindgen]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span> <span class="nf">string_example</span><span class="p">(</span><span class="n">s</span>: <span class="nb">String</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nb">String</span> <span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="fm">format!</span><span class="p">(</span><span class="s">&#34;Hello </span><span class="si">{}</span><span class="s">&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// str cannot be used as a return type.
+</span></span></span><span class="line"><span class="cl"><span class="c1">// This is because we can&#39;t return borrowed references with the wasm_bindgen macro.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="cp">#[wasm_bindgen]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span> <span class="nf">str_example</span><span class="p">(</span><span class="n">s</span>: <span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nb">String</span> <span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="fm">format!</span><span class="p">(</span><span class="s">&#34;Hello </span><span class="si">{}</span><span class="s">&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cp">#[wasm_bindgen]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span> <span class="nf">number_example</span><span class="p">(</span><span class="n">n</span>: <span class="kt">i32</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="kt">i32</span> <span class="p">{</span><span class="w"> </span><span class="c1">// assume the same for u32, usize, etc.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">    </span><span class="n">n</span><span class="o">+</span><span class="mi">100</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cp">#[wasm_bindgen]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span> <span class="nf">bool_example</span><span class="p">(</span><span class="n">_b</span>: <span class="kt">bool</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="kt">bool</span> <span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// `Box&lt;[JsValue]&gt;` are the representation for a JS array object.
+</span></span></span><span class="line"><span class="cl"><span class="c1">// When it comes to Js Arrays:
+</span></span></span><span class="line"><span class="cl"><span class="c1">// - They are iterable.
+</span></span></span><span class="line"><span class="cl"><span class="c1">// - Can contain multiple types by being of type JsValue (strictly typed arrays exist for numbers).
+</span></span></span><span class="line"><span class="cl"><span class="c1">// - Don&#39;t really support N-dimensional arrays and are expensive to work with.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="cp">#[wasm_bindgen]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span> <span class="nf">mixed_array_example</span><span class="p">(</span><span class="n">array</span>: <span class="nb">Box</span><span class="o">&lt;</span><span class="p">[</span><span class="n">JsValue</span><span class="p">]</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nb">Box</span><span class="o">&lt;</span><span class="p">[</span><span class="n">JsValue</span><span class="p">]</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">array</span><span class="p">.</span><span class="n">iter</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// compute things...
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="fm">vec!</span><span class="p">[</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="s">&#34;Hello&#34;</span><span class="p">.</span><span class="n">into</span><span class="p">(),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="mf">512.</span><span class="n">into</span><span class="p">(),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">JsValue</span>::<span class="no">NULL</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">JsValue</span>::<span class="no">UNDEFINED</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="mf">61.20.</span><span class="n">into</span><span class="p">(),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">.</span><span class="n">into_boxed_slice</span><span class="p">()</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// Typed arrays are only available for number types.
+</span></span></span><span class="line"><span class="cl"><span class="c1">// For example, the function below will return a JS Int32Array type.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="cp">#[wasm_bindgen]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span> <span class="nf">typed_array_example</span><span class="p">(</span><span class="n">_array</span>: <span class="nb">Box</span><span class="o">&lt;</span><span class="p">[</span><span class="kt">i32</span><span class="p">]</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nb">Box</span><span class="o">&lt;</span><span class="p">[</span><span class="kt">i32</span><span class="p">]</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="fm">vec!</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">].</span><span class="n">into_boxed_slice</span><span class="p">()</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// When it comes to Option:
+</span></span></span><span class="line"><span class="cl"><span class="c1">// - Some returns the value inside.
+</span></span></span><span class="line"><span class="cl"><span class="c1">// - None returns a JS undefined.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="cp">#[wasm_bindgen(catch)]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span> <span class="nf">option_example</span><span class="p">()</span><span class="w"> </span>-&gt; <span class="nb">Option</span><span class="o">&lt;</span><span class="kt">i32</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nb">None</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// When it comes to Result
+</span></span></span><span class="line"><span class="cl"><span class="c1">// - Result&lt;T, JsValue&gt; is the only supported signature. T must be convertible to a JsValue.
+</span></span></span><span class="line"><span class="cl"><span class="c1">// - #[wasm_bindgen(catch)] must be used when returning a result.
+</span></span></span><span class="line"><span class="cl"><span class="c1">// - Err will be equivalent to a JS thrown error.
+</span></span></span><span class="line"><span class="cl"><span class="c1">// - Ok will return the value inside.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="cp">#[wasm_bindgen]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span> <span class="nf">result_example</span><span class="p">()</span><span class="w"> </span>-&gt; <span class="nb">Result</span><span class="o">&lt;</span><span class="kt">i32</span><span class="p">,</span><span class="w"> </span><span class="n">JsValue</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// With the wasm prelude imported, we can convert most common types by calling .into()
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">    </span><span class="nb">Err</span><span class="p">(</span><span class="s">&#34;Look Pa, I&#39;m throwing a JS error!&#34;</span><span class="p">.</span><span class="n">into</span><span class="p">())</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span></span></span></code></pre></div>
+</div><p>Once the project is built again, these functions can be directly used in our web page. Feel free to play around and print the values returned.</p>
+
+
+
+
+
+
+
+
+<div class="code-block">
+    <div class="code-block-tabs">
+        
+        
+            <div class="code-block-lang">
+                <p>html</p>
+            </div>
+        
+        
+        
+    </div>
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;module&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">import</span> <span class="o">*</span> <span class="nx">as</span> <span class="nx">wasm</span> <span class="nx">from</span> <span class="s2">&#34;./pkg/hello_wasm.js&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nx">wasm</span><span class="p">.</span><span class="k">default</span><span class="p">().</span><span class="nx">then</span><span class="p">((</span><span class="nx">module</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">wasm</span><span class="p">.</span><span class="nx">char_example</span><span class="p">(</span><span class="s2">&#34;R&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">wasm</span><span class="p">.</span><span class="nx">string_example</span><span class="p">(</span><span class="s2">&#34;Jane&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">wasm</span><span class="p">.</span><span class="nx">str_example</span><span class="p">(</span><span class="s2">&#34;John&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">wasm</span><span class="p">.</span><span class="nx">number_example</span><span class="p">(</span><span class="mi">28</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">wasm</span><span class="p">.</span><span class="nx">mixed_array_example</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">,</span> <span class="s2">&#34;Hola&#34;</span><span class="p">,</span> <span class="kc">true</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">wasm</span><span class="p">.</span><span class="nx">typed_array_example</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">wasm</span><span class="p">.</span><span class="nx">option_example</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">wasm</span><span class="p">.</span><span class="nx">result_example</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="p">});</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span></span></span></code></pre></div>
+</div><h2 id="exporting-structs--enums">Exporting Structs &amp; Enums</h2>
+<p>Expanding on what was explored above, enums and structs are a fairly simple export. Although there are some restrictions, the syntax should still feel like day-to-day Rust.</p>
+
+
+
+
+
+
+
+
+<div class="code-block">
+    <div class="code-block-tabs">
+        
+        
+            <div class="code-block-lang">
+                <p>rust</p>
+            </div>
+        
+        
+        
+    </div>
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-rust" data-lang="rust"><span class="line"><span class="cl"><span class="k">use</span><span class="w"> </span><span class="n">wasm_bindgen</span>::<span class="n">prelude</span>::<span class="o">*</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// When it comes to Enums:
+</span></span></span><span class="line"><span class="cl"><span class="c1">// - They  are C styled.
+</span></span></span><span class="line"><span class="cl"><span class="c1">// - JS represents them through an object with a number for each variant.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="cp">#[wasm_bindgen]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">pub</span><span class="w"> </span><span class="k">enum</span> <span class="nc">ExampleEnum</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Yes</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">No</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cp">#[wasm_bindgen]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span> <span class="nf">verify_enum_choice</span><span class="p">(</span><span class="n">choice</span>: <span class="nc">ExampleEnum</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="kt">bool</span> <span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">match</span><span class="w"> </span><span class="n">choice</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">ExampleEnum</span>::<span class="n">Yes</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">ExampleEnum</span>::<span class="n">No</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// When it comes to Structs:
+</span></span></span><span class="line"><span class="cl"><span class="c1">// - Cannot contain lifetimes or type parameters.
+</span></span></span><span class="line"><span class="cl"><span class="c1">// - Each field value must impl the Copy trait.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="cp">#[wasm_bindgen]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">pub</span><span class="w"> </span><span class="k">struct</span> <span class="nc">ExampleStruct</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">value</span>: <span class="kt">i32</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// For struct impl, we have the option for struct methods and type-level functions.
+</span></span></span><span class="line"><span class="cl"><span class="c1">// JS handles structs by creating a JS object with a pointer (i.o.w. we can use references!).
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="cp">#[wasm_bindgen]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">impl</span><span class="w"> </span><span class="n">ExampleStruct</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span> <span class="nf">new</span><span class="p">(</span><span class="n">value</span>: <span class="kt">i32</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">ExampleStruct</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">ExampleStruct</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span> <span class="nf">read_method</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="kt">i32</span> <span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="bp">self</span><span class="p">.</span><span class="n">value</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span> <span class="nf">write_method</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">value</span>: <span class="kt">i32</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="bp">self</span><span class="p">.</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">value</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span> <span class="nf">transfer_ownership</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">ExampleStruct</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="bp">self</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span></span></span></code></pre></div>
+</div><p>Now we can import the struct and enum directly into our JS code. Once a struct is instantiated, we can call its Wasm compatible methods.</p>
+
+
+
+
+
+
+
+
+<div class="code-block">
+    <div class="code-block-tabs">
+        
+        
+            <div class="code-block-lang">
+                <p>html</p>
+            </div>
+        
+        
+        
+    </div>
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;module&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">import</span> <span class="o">*</span> <span class="nx">as</span> <span class="nx">wasm</span> <span class="nx">from</span> <span class="s2">&#34;./pkg/hello_wasm.js&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nx">wasm</span><span class="p">.</span><span class="k">default</span><span class="p">().</span><span class="nx">then</span><span class="p">((</span><span class="nx">module</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Enum \\
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kd">let</span> <span class="nx">rustEnum</span> <span class="o">=</span> <span class="nx">wasm</span><span class="p">.</span><span class="nx">ExampleEnum</span><span class="p">.</span><span class="nx">Yes</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">wasm</span><span class="p">.</span><span class="nx">verify_enum_choice</span><span class="p">(</span><span class="nx">rustEnum</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// Struct \\
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kd">let</span> <span class="nx">rustStruct</span> <span class="o">=</span> <span class="nx">wasm</span><span class="p">.</span><span class="nx">ExampleStruct</span><span class="p">.</span><span class="k">new</span><span class="p">(</span><span class="mi">6</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">rustStruct</span><span class="p">);</span> <span class="c1">// this will contain a pointer
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">rustStruct</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">rustStruct</span><span class="p">.</span><span class="nx">write_method</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">rustStruct</span><span class="p">.</span><span class="nx">read_method</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">let</span> <span class="nx">newRustStruct</span> <span class="o">=</span> <span class="nx">rustStruct</span><span class="p">.</span><span class="nx">transfer_ownership</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">rustStruct</span><span class="p">.</span><span class="nx">read_method</span><span class="p">();</span> <span class="c1">// rustStruct is now invalid. An error will throw.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="p">});</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span></span></span></code></pre></div>
+</div><p>We&rsquo;ve provided an output image of the script below to better show how these types work. Notice how the enums and structs are represented in JS.</p>
+<img src="/posts/getting-started-with-webassembly-and-rust/images/enum_and_struct_example_log.png" alt="Web console output of Rust struct and enum exports"><h2 id="manually-creating-bindings">Manually Creating Bindings</h2>
+<p>The <code>wasm-bindgen</code> crate gives us powerful tooling for talking to JS. However, there are no direct bindings for the JS standard or Web APIs. That&rsquo;s where <code>web-sys</code> and <code>js-sys</code> come in. Both crates provide ready made bindings that give us a standard interface to work with.</p>
+<p>Of course, these crates don&rsquo;t cover everything and we need to create our own bindings for anything missing. A common example is wrapping over custom JS classes and functions. When you first opened <code>src/lib.rs</code> you might&rsquo;ve noticed a binding was created for the <code>alert()</code> function.</p>
+<p>To see how to create our own custom bindings, we&rsquo;ll first look over the JS code we want Rust to bind for.</p>
+
+
+
+
+
+
+
+
+<div class="code-block">
+    <div class="code-block-tabs">
+        
+        
+            <div class="code-block-lang">
+                <p>html</p>
+            </div>
+        
+        
+        
+    </div>
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="c">&lt;!--
+</span></span></span><span class="line"><span class="cl"><span class="c">  For simplicity, we&#39;ll add a class declaration to the global namespace.
+</span></span></span><span class="line"><span class="cl"><span class="c">  The goal, from rust, is to create this class, call a method, and get/set a property.
+</span></span></span><span class="line"><span class="cl"><span class="c">--&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">class</span> <span class="nx">Coordinate</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">constructor</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="k">this</span><span class="p">.</span><span class="nx">x</span> <span class="o">=</span> <span class="nx">x</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="k">this</span><span class="p">.</span><span class="nx">y</span> <span class="o">=</span> <span class="nx">y</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">printValues</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="sb">`(x:</span><span class="si">${</span><span class="k">this</span><span class="p">.</span><span class="nx">x</span><span class="si">}</span><span class="sb"> y:</span><span class="si">${</span><span class="k">this</span><span class="p">.</span><span class="nx">y</span><span class="si">}</span><span class="sb">)`</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;module&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">import</span> <span class="o">*</span> <span class="nx">as</span> <span class="nx">wasm</span> <span class="nx">from</span> <span class="s2">&#34;./pkg/hello_wasm.js&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nx">wasm</span><span class="p">.</span><span class="k">default</span><span class="p">().</span><span class="nx">then</span><span class="p">((</span><span class="nx">module</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">wasm</span><span class="p">.</span><span class="nx">manual_bindings_example</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="p">});</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span></span></span></code></pre></div>
+</div><p>On top of binding the Coordinates class, below are some examples on how to do the same for various JS functions.</p>
+
+
+
+
+
+
+
+
+<div class="code-block">
+    <div class="code-block-tabs">
+        
+        
+            <div class="code-block-lang">
+                <p>rust</p>
+            </div>
+        
+        
+        
+    </div>
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-rust" data-lang="rust"><span class="line"><span class="cl"><span class="k">use</span><span class="w"> </span><span class="n">wasm_bindgen</span>::<span class="n">prelude</span>::<span class="o">*</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// Although we&#39;re using what&#39;s in the global namespace, we can also import from other modules.
+</span></span></span><span class="line"><span class="cl"><span class="c1">// #[wasm_bindgen(module = &#34;./bar&#34;)]
+</span></span></span><span class="line"><span class="cl"><span class="c1">// extern &#34;C&#34; {}
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// Binding JS involves a bit of boilerplate because we have to specify each name
+</span></span></span><span class="line"><span class="cl"><span class="c1">// and signature to bind.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="cp">#[wasm_bindgen]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">extern</span><span class="w"> </span><span class="s">&#34;C&#34;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// Bindings must be named as their JS equivalent
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">    </span><span class="k">fn</span> <span class="nf">alert</span><span class="p">(</span><span class="n">s</span>: <span class="kp">&amp;</span><span class="kt">str</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// A different name can be specified as long as the original name is passed to the macro.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">    </span><span class="cp">#[wasm_bindgen(js_name = prompt)]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">fn</span> <span class="nf">ask</span><span class="p">(</span><span class="n">s</span>: <span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nb">String</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// Functions can be from any js namespace.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">    </span><span class="cp">#[wasm_bindgen(js_namespace = console)]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">fn</span> <span class="nf">log</span><span class="p">(</span><span class="n">s</span>: <span class="kp">&amp;</span><span class="kt">str</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// Using a different name allows us to specify various signatures.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">    </span><span class="cp">#[wasm_bindgen(js_namespace = console, js_name = log)]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">fn</span> <span class="nf">log_num</span><span class="p">(</span><span class="n">n</span>: <span class="kt">i32</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">//* JS Class example *\\
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">    </span><span class="c1">// The process is a little verbose because create a binding for
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">    </span><span class="c1">// each part of the class we want (class name, constructor, methods, setters, getters).
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">    </span><span class="k">type</span> <span class="nc">Coordinate</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="cp">#[wasm_bindgen(constructor)]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">fn</span> <span class="nf">new</span><span class="p">(</span><span class="n">x</span>: <span class="kt">i32</span><span class="p">,</span><span class="w"> </span><span class="n">y</span>: <span class="kt">i32</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">Coordinate</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// methods must match the naming in the class declaration.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">    </span><span class="cp">#[wasm_bindgen(method)]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">fn</span> <span class="nf">printValues</span><span class="p">(</span><span class="n">this</span>: <span class="kp">&amp;</span><span class="nc">Coordinate</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nb">String</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// getters are named as the property we want.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">    </span><span class="cp">#[wasm_bindgen(getter, method)]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">fn</span> <span class="nf">x</span><span class="p">(</span><span class="n">this</span>: <span class="kp">&amp;</span><span class="nc">Coordinate</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="kt">i32</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// setters are named the same as getters but with a `set_` prefix.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">    </span><span class="cp">#[wasm_bindgen(setter, method)]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">fn</span> <span class="nf">set_x</span><span class="p">(</span><span class="n">this</span>: <span class="kp">&amp;</span><span class="nc">Coordinate</span><span class="p">,</span><span class="w"> </span><span class="n">x</span>: <span class="kt">i32</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cp">#[wasm_bindgen]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span> <span class="nf">manual_bindings_example</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">alert</span><span class="p">(</span><span class="s">&#34;Hey buddy!&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">log</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ask</span><span class="p">(</span><span class="s">&#34;Tell me about your day!&#34;</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">coordinates</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Coordinate</span>::<span class="n">new</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">15</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">log_num</span><span class="p">(</span><span class="n">coordinates</span><span class="p">.</span><span class="n">x</span><span class="p">());</span><span class="w"> </span><span class="c1">// prints -4
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">coordinates</span><span class="p">.</span><span class="n">set_x</span><span class="p">(</span><span class="n">coordinates</span><span class="p">.</span><span class="n">x</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">log</span><span class="p">(</span><span class="o">&amp;</span><span class="n">coordinates</span><span class="p">.</span><span class="n">printValues</span><span class="p">());</span><span class="w"> </span><span class="c1">// prints (-8, 15)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span></span></span></code></pre></div>
+</div><img src="/posts/getting-started-with-webassembly-and-rust/images/manual_bindings_example.gif" alt="Browser and console output of the manually created Rust Wasm bindings"><h2 id="interacting-with-web-apis">Interacting With Web APIs</h2>
+<p>The majority essential web APIs are provided and documented by the <code>web-sys</code> crate. After specifying what APIs we want, we can:</p>
+<ul>
+<li>Edit HTML elements.</li>
+<li>Add event listeners.</li>
+<li>Print to the web console.</li>
+<li>Draw on a canvas.</li>
+<li>And more!</li>
+</ul>
+<p>Since the list is extensive, we&rsquo;ll simply cover how to set up and use this create. Add the following to the project&rsquo;s <code>Cargo.toml</code> and then specify each web API you want to use.</p>
+
+
+
+
+
+
+
+
+<div class="code-block">
+    <div class="code-block-tabs">
+        
+        
+            <div class="code-block-lang">
+                <p>toml</p>
+            </div>
+        
+        
+        
+    </div>
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="p">[</span><span class="nx">dependencies</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nx">web-sys</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">version</span> <span class="p">=</span> <span class="s2">&#34;0.3.39&#34;</span><span class="p">,</span> <span class="nx">features</span> <span class="p">=</span> <span class="p">[</span><span class="s1">&#39;console&#39;</span><span class="p">]</span> <span class="p">}</span></span></span></code></pre></div>
+</div>
+
+
+
+
+
+
+
+<div class="code-block">
+    <div class="code-block-tabs">
+        
+        
+            <div class="code-block-lang">
+                <p>rust</p>
+            </div>
+        
+        
+        
+    </div>
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-rust" data-lang="rust"><span class="line"><span class="cl"><span class="k">use</span><span class="w"> </span><span class="n">wasm_bindgen</span>::<span class="n">prelude</span>::<span class="o">*</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">use</span><span class="w"> </span><span class="n">web_sys</span>::<span class="n">console</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cp">#[wasm_bindgen]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span> <span class="nf">print_things</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c1">// console has multiple log_x functions that represent how many items are being printed.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">  </span><span class="c1">// log_x takes in a reference to a JsValue so we need to convert the values we want to print.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">  </span><span class="n">console</span>::<span class="n">log_1</span><span class="p">(</span><span class="o">&amp;</span><span class="s">&#34;Printing from Rust!!&#34;</span><span class="p">.</span><span class="n">into</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">console</span>::<span class="n">log_2</span><span class="p">(</span><span class="o">&amp;</span><span class="s">&#34;Numbers: &#34;</span><span class="p">.</span><span class="n">into</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="mf">1234.</span><span class="n">into</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span></span></span></code></pre></div>
+</div><p><code>web-sys</code> Resources:</p>
+<ul>
+<li><a href="https://docs.rs/crate/web-sys/0.3.39/source/Cargo.toml">Available Crate features</a>: The full list of Web APIs.</li>
+<li><a href="https://rustwasm.github.io/docs/wasm-bindgen/examples/dom.html">Official Example</a>: Covers basic DOM manipulation.</li>
+</ul>
+<p>Remember to take a look at the <code>js-sys</code> crate if you find yourself needing to import types and functions from standard JS.</p>
+<h1 id="closing-thoughts">Closing Thoughts</h1>
+<p>Although we couldn&rsquo;t cover everything (Wasm has more to offer than can fit in just one blog post), I hope this guide was able to jump start your journey into WebAssembly! I highly encourage going though the <a href="https://rustwasm.github.io/docs/wasm-bindgen/">wasm-bindgen docs</a> to go over what we couldn&rsquo;t cover here. It covers more in-depth examples and important topics like <a href="https://rustwasm.github.io/docs/wasm-bindgen/reference/arbitrary-data-with-serde.html">Sending Arbitrary Data Between JS &amp; Rust</a>. Keep in mind that the Rust WebAssembly ecosystem is still growing and it&rsquo;s only going to get better from here!</p>
+
+    
+  </div>
+</div>
+
+        </main>
+    <footer>
+      <div class="inner-footer">
+    <div class="left-footer">
+        <p><i class="ri-copyright-line"></i>2025 Carlos Chacin</p>
+        <p>Built With: <a href="https://gohugo.io/" target="_blank">Hugo</a></p>
+        <p>Icons: <a href="https://remixicon.com/" target="_blank"><i class="ri-remixicon-line"></i> Remix Icon</a></p>
+    </div>
+
+    <div class="right-footer">
+        <p>Page Version: <a target="_blank" href="https://codeberg.org/Hermitter/website/commit/964ce7eda6f9279ca5c5c559dd7477c047a3c4b1">964ce7e</a></p>
+        <p>Title Font: <a target="_blank" href="https://github.com/tanukifont/YuseiMagic">YuseiMagic</a></p>
+    </div>
+</div>
+    </footer>
+</body>
+</html>

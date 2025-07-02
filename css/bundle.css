@@ -1,0 +1,1089 @@
+/* Generated using: hugo gen chromastyles --style=github-dark */
+
+/* Background */
+.bg {
+    color: #e6edf3;
+    background-color: #0d1117;
+}
+
+/* PreWrapper */
+.chroma {
+    color: #e6edf3;
+    background-color: #0d1117;
+}
+
+/* Other */
+.chroma .x {}
+
+/* Error */
+.chroma .err {
+    color: #f85149
+}
+
+/* CodeLine */
+.chroma .cl {}
+
+/* LineLink */
+.chroma .lnlinks {
+    outline: none;
+    text-decoration: none;
+    color: inherit
+}
+
+/* LineTableTD */
+.chroma .lntd {
+    vertical-align: top;
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+/* LineTable */
+.chroma .lntable {
+    border-spacing: 0;
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+/* LineHighlight */
+.chroma .hl {
+    background-color: #ea73ca36;
+}
+
+/* LineNumbersTable */
+.chroma .lnt {
+    white-space: pre;
+    -webkit-user-select: none;
+    user-select: none;
+    margin-right: 0.4em;
+    padding: 0 0.4em 0 0.4em;
+    color: #737679
+}
+
+/* LineNumbers */
+.chroma .ln {
+    white-space: pre;
+    -webkit-user-select: none;
+    user-select: none;
+    margin-right: 0.4em;
+    padding: 0 0.4em 0 0.4em;
+    color: #6e7681
+}
+
+/* Line */
+.chroma .line {
+    display: flex;
+}
+
+/* Keyword */
+.chroma .k {
+    color: #ff7b72
+}
+
+/* KeywordConstant */
+.chroma .kc {
+    color: #79c0ff
+}
+
+/* KeywordDeclaration */
+.chroma .kd {
+    color: #ff7b72
+}
+
+/* KeywordNamespace */
+.chroma .kn {
+    color: #ff7b72
+}
+
+/* KeywordPseudo */
+.chroma .kp {
+    color: #79c0ff
+}
+
+/* KeywordReserved */
+.chroma .kr {
+    color: #ff7b72
+}
+
+/* KeywordType */
+.chroma .kt {
+    color: #ff7b72
+}
+
+/* Name */
+.chroma .n {}
+
+/* NameAttribute */
+.chroma .na {}
+
+/* NameClass */
+.chroma .nc {
+    color: #f0883e;
+    font-weight: bold
+}
+
+/* NameConstant */
+.chroma .no {
+    color: #79c0ff;
+    font-weight: bold
+}
+
+/* NameDecorator */
+.chroma .nd {
+    color: #d2a8ff;
+    font-weight: bold
+}
+
+/* NameEntity */
+.chroma .ni {
+    color: #ffa657
+}
+
+/* NameException */
+.chroma .ne {
+    color: #f0883e;
+    font-weight: bold
+}
+
+/* NameLabel */
+.chroma .nl {
+    color: #79c0ff;
+    font-weight: bold
+}
+
+/* NameNamespace */
+.chroma .nn {
+    color: #ff7b72
+}
+
+/* NameOther */
+.chroma .nx {}
+
+/* NameProperty */
+.chroma .py {
+    color: #79c0ff
+}
+
+/* NameTag */
+.chroma .nt {
+    color: #7ee787
+}
+
+/* NameBuiltin */
+.chroma .nb {}
+
+/* NameBuiltinPseudo */
+.chroma .bp {}
+
+/* NameVariable */
+.chroma .nv {
+    color: #79c0ff
+}
+
+/* NameVariableClass */
+.chroma .vc {
+    color: #79c0ff
+}
+
+/* NameVariableGlobal */
+.chroma .vg {
+    color: #79c0ff
+}
+
+/* NameVariableInstance */
+.chroma .vi {
+    color: #79c0ff
+}
+
+/* NameVariableMagic */
+.chroma .vm {
+    color: #79c0ff
+}
+
+/* NameFunction */
+.chroma .nf {
+    color: #d2a8ff;
+    font-weight: bold
+}
+
+/* NameFunctionMagic */
+.chroma .fm {
+    color: #d2a8ff;
+    font-weight: bold
+}
+
+/* Literal */
+.chroma .l {
+    color: #a5d6ff
+}
+
+/* LiteralDate */
+.chroma .ld {
+    color: #79c0ff
+}
+
+/* LiteralString */
+.chroma .s {
+    color: #a5d6ff
+}
+
+/* LiteralStringAffix */
+.chroma .sa {
+    color: #79c0ff
+}
+
+/* LiteralStringBacktick */
+.chroma .sb {
+    color: #a5d6ff
+}
+
+/* LiteralStringChar */
+.chroma .sc {
+    color: #a5d6ff
+}
+
+/* LiteralStringDelimiter */
+.chroma .dl {
+    color: #79c0ff
+}
+
+/* LiteralStringDoc */
+.chroma .sd {
+    color: #a5d6ff
+}
+
+/* LiteralStringDouble */
+.chroma .s2 {
+    color: #a5d6ff
+}
+
+/* LiteralStringEscape */
+.chroma .se {
+    color: #79c0ff
+}
+
+/* LiteralStringHeredoc */
+.chroma .sh {
+    color: #79c0ff
+}
+
+/* LiteralStringInterpol */
+.chroma .si {
+    color: #a5d6ff
+}
+
+/* LiteralStringOther */
+.chroma .sx {
+    color: #a5d6ff
+}
+
+/* LiteralStringRegex */
+.chroma .sr {
+    color: #79c0ff
+}
+
+/* LiteralStringSingle */
+.chroma .s1 {
+    color: #a5d6ff
+}
+
+/* LiteralStringSymbol */
+.chroma .ss {
+    color: #a5d6ff
+}
+
+/* LiteralNumber */
+.chroma .m {
+    color: #a5d6ff
+}
+
+/* LiteralNumberBin */
+.chroma .mb {
+    color: #a5d6ff
+}
+
+/* LiteralNumberFloat */
+.chroma .mf {
+    color: #a5d6ff
+}
+
+/* LiteralNumberHex */
+.chroma .mh {
+    color: #a5d6ff
+}
+
+/* LiteralNumberInteger */
+.chroma .mi {
+    color: #a5d6ff
+}
+
+/* LiteralNumberIntegerLong */
+.chroma .il {
+    color: #a5d6ff
+}
+
+/* LiteralNumberOct */
+.chroma .mo {
+    color: #a5d6ff
+}
+
+/* Operator */
+.chroma .o {
+    color: #ff7b72;
+    font-weight: bold
+}
+
+/* OperatorWord */
+.chroma .ow {
+    color: #ff7b72;
+    font-weight: bold
+}
+
+/* Punctuation */
+.chroma .p {}
+
+/* Comment */
+.chroma .c {
+    color: #8b949e;
+    font-style: italic
+}
+
+/* CommentHashbang */
+.chroma .ch {
+    color: #8b949e;
+    font-style: italic
+}
+
+/* CommentMultiline */
+.chroma .cm {
+    color: #8b949e;
+    font-style: italic
+}
+
+/* CommentSingle */
+.chroma .c1 {
+    color: #8b949e;
+    font-style: italic
+}
+
+/* CommentSpecial */
+.chroma .cs {
+    color: #8b949e;
+    font-weight: bold;
+    font-style: italic
+}
+
+/* CommentPreproc */
+.chroma .cp {
+    color: #8b949e;
+    font-weight: bold;
+    font-style: italic
+}
+
+/* CommentPreprocFile */
+.chroma .cpf {
+    color: #8b949e;
+    font-weight: bold;
+    font-style: italic
+}
+
+/* Generic */
+.chroma .g {}
+
+/* GenericDeleted */
+.chroma .gd {
+    color: #ffa198;
+    background-color: #490202
+}
+
+/* GenericEmph */
+.chroma .ge {
+    font-style: italic
+}
+
+/* GenericError */
+.chroma .gr {
+    color: #ffa198
+}
+
+/* GenericHeading */
+.chroma .gh {
+    color: #79c0ff;
+    font-weight: bold
+}
+
+/* GenericInserted */
+.chroma .gi {
+    color: #56d364;
+    background-color: #0f5323
+}
+
+/* GenericOutput */
+.chroma .go {
+    color: #8b949e
+}
+
+/* GenericPrompt */
+.chroma .gp {
+    color: #8b949e
+}
+
+/* GenericStrong */
+.chroma .gs {
+    font-weight: bold
+}
+
+/* GenericSubheading */
+.chroma .gu {
+    color: #79c0ff
+}
+
+/* GenericTraceback */
+.chroma .gt {
+    color: #ff7b72
+}
+
+/* GenericUnderline */
+.chroma .gl {
+    text-decoration: underline
+}
+
+/* TextWhitespace */
+.chroma .w {
+    color: #6e7681
+}:root {
+  --background-color: #161122;
+  --background-color2: #ea73ca;
+  --background-color3: #a39efb;
+  --background-color4: #665fe8;
+  --background-color5: #1c1717;
+  --background-color6: #5353539c;
+
+  --font-color: #FFF;
+  --max-content-width: 920px;
+  --highlight-color: #ff97fc;
+  --edge-spacing: 20px;
+  --title-font: yuseimagic;
+  --border-radius: 8px;
+  background: var(--background-color);
+}
+
+* {
+  scrollbar-color: #5353539c rgba(0, 0, 0, 0);
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background: var(--background-color);
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+body {
+  color: var(--font-color);
+  background: var(--background-color);
+  font-family: sans-serif;
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+h1,
+h2,
+h3,
+h5,
+h6 {
+  font-family: var(--title-font);
+}
+
+main {
+  flex-grow: 1;
+  width: 100%;
+  padding: 20px;
+  margin: auto;
+  margin-top: 0;
+  background: var(--background-color);
+  max-width: var(--max-content-width);
+}
+
+main:not(:has(>.post)) {
+  max-width: calc(var(--max-content-width) - 7em);
+}
+
+main p,
+main ul {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+main img {
+  display: block;
+  max-width: 100%;
+  margin: auto;
+}
+
+main h1:first-child {
+  margin-top: 0;
+}
+
+main a:hover,
+.inner-footer a:hover {
+  text-decoration: underline;
+}
+
+/* Header + Footer */
+header {
+  background-color: var(--background-color2);
+  padding-top: 5px;
+  margin-bottom: 1rem;
+}
+
+.inner-header,
+.inner-footer {
+  margin: auto;
+  max-width: calc(var(--max-content-width) + 3rem);
+  padding-left: var(--edge-spacing);
+  padding-right: var(--edge-spacing);
+}
+
+footer {
+  flex-grow: 0;
+  border-top: 2px solid var(--background-color2);
+  background-color: var(--background-color);
+  margin-top: 2rem;
+  padding-bottom: 20px;
+}
+
+.inner-footer p {
+  font-family: var(--title-font);
+  margin-top: 5px;
+  margin-bottom: 0;
+}
+
+a {
+  color: var(--highlight-color);
+  text-decoration: none;
+}
+
+/* Navigation */
+header .header-title,
+header nav li a {
+  color: var(--font-color);
+  background-color: var(--background-color);
+}
+
+header .header-title {
+  font-size: 25px;
+  padding: 0 6px 0 6px;
+  border-top-left-radius: 13px;
+  border-top-right-radius: 13px;
+  margin-bottom: -3px;
+}
+
+header nav li a {
+  font-size: 20px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 3px;
+  padding: 4px 7px 7px 7px;
+}
+
+header nav a {
+  font-family: var(--title-font);
+  position: relative;
+  color: var(--highlight-color);
+  text-decoration: none;
+  /* Background color needed since some browsers don't render inset box shadows in elements with a rounded borders */
+  /* transition:
+    background-color .20s ease-in-out,
+    box-shadow .24s ease-in-out; */
+  /* box-shadow: inset 0 0px 0 -0px var(--background-color3); */
+}
+
+header nav a:hover {
+  text-decoration: underline;
+}
+
+header nav a.active {
+  /* box-shadow: inset 0 50px 0 -1px var(--background-color3); */
+  background-color: var(--background-color4);
+}
+
+header nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  overflow-y: hidden;
+}
+
+header nav ul {
+  padding-left: 12px;
+  margin-bottom: 0px;
+}
+
+header nav li {
+  margin: auto;
+  margin-right: 27px;
+  display: inline;
+  list-style-type: none;
+  text-decoration: none;
+}
+
+header nav li:last-child {
+  margin-right: 0;
+}
+
+.inner-footer {
+  padding-top: 8px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  font-size: 14px;
+}
+
+/* SOCIALS */
+a:has(>.social-icons) {
+  color: var(--font-color);
+  text-decoration: none;
+  border-radius: var(--border-radius);
+  border: solid 1px var(--background-color2);
+  margin-left: 10px;
+  margin-right: 10px;
+  transition:
+    color .14s ease-in-out,
+    background-color .14s ease-in-out;
+}
+
+a:has(>.social-icons):hover {
+  text-decoration: none;
+  background-color: var(--background-color2);
+
+}
+
+a:has(>.social-icons):active {
+  background-color: var(--background-color4)
+}
+
+a:has(>.social-icons),
+.social-icons {
+  font-size: 37px;
+}
+
+.social-icons {
+  padding: 4px;
+  text-align: center;
+}
+
+/* RECENT POSTS */
+.post-item h2 {
+  margin-bottom: 4px;
+}
+
+.post-item p:last-child {
+  margin-top: 6px;
+}
+
+.post-item-header {
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+
+.post-item p:has(time) {
+  margin-top: 6px;
+  margin-bottom: 7px;
+  margin-left: 8px;
+  font-size: 12px;
+}
+
+.post-item p time {
+  background-color: var(--background-color6);
+  padding: 3px 7px;
+  border-radius: 3px;
+}
+
+@media only screen and (max-width: 550px) {
+
+  /* RECENT POSTS */
+  .post-item-header {
+    margin-top: 30px;
+  }
+
+  /* NAV MOBILE */
+  header .inner-header {
+    margin: 0;
+    padding: 0;
+  }
+
+  header .header-title {
+    padding-bottom: 4px;
+    padding-top: 4px;
+  }
+
+  header nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  header nav ul {
+    width: 100%;
+    margin: 0;
+    padding-left: 0;
+    /* background-color: var(--background-color); */
+    display: block;
+  }
+
+  header nav ul li {
+    margin: 0;
+    /* background-color: var(--background-color); */
+    display: block;
+  }
+
+  header nav li a,
+  .header-title {
+    width: 100%;
+    display: block;
+    border-bottom: 2px solid var(--background-color2);
+    border-top-left-radius: unset;
+    border-top-right-radius: unset;
+  }
+
+  header .header-title {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    margin-bottom: 0;
+  }
+
+
+  .inner-footer {
+    flex-direction: column;
+    align-content: center;
+    text-align: center;
+  }
+}/* Code Blocks */
+.code-block {
+    margin: 20px 0px 20px 0px;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--background-color);
+}
+
+.code-block .highlight {
+    background-color: #0d1117;
+}
+
+.code-block pre {
+    border: var(--background-color2) solid 1px;
+    border-radius: var(--border-radius);
+    margin-top: 0;
+    margin-bottom: 0;
+    overflow-x: auto;
+    padding: 11px 0px;
+    /* Fix for padding not applying to right of code block in overflow. (IDK why this works) */
+    display: grid;
+}
+
+.code-block code {
+    display: block;
+    /* Fixes iOS font sizing anomaly: https://nathan.rs/posts/fixing-ios-codeblocks/ */
+    text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+.code-block .line {
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+/* CODE TABS */
+/* Includes logic for when there're 1, 2, or no tabs on a code block */
+.code-block-tabs {
+    display: flex;
+    flex-direction: row;
+}
+
+.code-block-tabs p {
+    padding: 0 10px 0 10px;
+    margin: 0;
+}
+
+/* Code block has a tab */
+.code-block-tabs:has(div)~.highlight pre {
+    border-top-left-radius: 0;
+}
+
+/* Round the left border of the first tab */
+.code-block-tabs .code-block-lang:first-child,
+.code-block-tabs .code-block-title:first-child {
+    border-top-left-radius: var(--border-radius);
+}
+
+/* 2 tabs mean the second has no left border rounding */
+.code-block-tabs .code-block-title:nth-child(2) {
+    border-left: none;
+}
+
+/* Remove right border rounding from first tab when there are other tabs */
+.code-block-lang:has(+ .code-block-title) {
+    border-top-right-radius: 0;
+}
+
+.code-block-lang {
+    max-width: fit-content;
+    border-top-right-radius: var(--border-radius);
+    background-color: var(--background-color);
+    border-top: var(--background-color2) solid 1px;
+    border-right: var(--background-color2) solid 1px;
+    border-left: var(--background-color2) solid 1px;
+}
+
+.code-block-title {
+    align-self: flex-end;
+    height: fit-content;
+    max-width: fit-content;
+    background-color: var(--background-color);
+    border-top: var(--background-color2) solid 1px;
+    border-right: var(--background-color2) solid 1px;
+    border-left: var(--background-color2) solid 1px;
+    border-top-right-radius: var(--border-radius);
+}
+
+.no-code-lang .code-block-title {
+    border-top-left-radius: var(--border-radius);
+}
+
+/* CODE BLOCK LINE TABLE */
+.lntable .lntd:first-child pre {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right: 0;
+}
+
+.lntable .lntd:last-child pre {
+    border-bottom-left-radius: 0;
+}
+
+.line:has(.ln) {
+    padding-left: 6px;
+}
+
+.line .ln {
+    padding-right: 10px;
+}.metadata {
+    width: fit-content;
+}
+
+.metadata ul {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 0px;
+    padding-left: 5px;
+    padding-bottom: 4px;
+    padding-top: 2px;
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    list-style: none;
+}
+
+.metadata li {
+    margin-top: 2px
+}
+
+.post .banner {
+    margin-bottom: 10px;
+    border-radius: var(--border-radius);
+}
+
+.content {
+    max-width: calc(var(--max-content-width) - 7em);
+    padding-top: 28px;
+    margin: auto;
+}
+
+/* Remove top margin from first element of every post */
+.content>*:first-child {
+    margin-top: 0;
+}
+
+.content h1 {
+    background-color: var(--background-color4);
+    padding-top: 0px;
+    padding-bottom: 3px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.content h1,
+.content h2,
+.content h3 {
+    margin-top: 35px;
+    margin-bottom: 15px;
+    border-radius: var(--border-radius);
+}
+
+.content h2,
+.content h3 {
+    text-decoration: underline;
+}
+
+/* highlighted text that uses <code> for some reason*/
+.content code:not(:has(*)) {
+    background-color: var(--background-color6);
+    border: 1px solid var(--background-color2);
+    padding: 2px 5px 2px 5px;
+    border-radius: 2px;
+    margin-right: 1px;
+    margin-left: 1px;
+}
+
+.content blockquote {
+    background-color: var(--background-color5);
+    border: var(--background-color2) solid 1px;
+    border-radius: var(--border-radius);
+    margin: 16px 16px 16px 16px;
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.content blockquote p {
+    margin: 5px;
+}
+
+/* Images stand alone */
+.content>img {
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+/* Images inside other tags */
+.content img,
+.content>img {
+    border-radius: var(--border-radius);
+}
+
+/* Table of Contents */
+
+.toc-wrapper details {
+    padding: 2px 4px 2px 4px;
+}
+
+.toc-wrapper summary {
+    cursor: pointer;
+    list-style: none;
+}
+
+.toc-wrapper details i {
+    display: none;
+}
+
+.toc-wrapper details[open] i:last-child {
+    display: inline-block;
+}
+
+.toc-wrapper details:not([open]) i:first-child {
+    display: inline-block;
+}
+
+.toc-wrapper details {
+    width: fit-content;
+    padding-left: 0;
+    padding-top: 0;
+}
+
+.toc-wrapper nav ol {
+    margin-top: 0;
+    list-style-position: inside;
+    padding-left: 37px;
+}
+
+.toc-wrapper nav ol:first-child {
+    padding: 5px 16px 7px 16px;
+    margin-top: 4px;
+    margin-left: 5px;
+    border-left: var(--background-color2) inset 2px;
+}
+
+.toc-wrapper nav>ol {
+    margin-top: 0;
+    list-style-position: inside;
+    padding-left: 10px;
+}
+
+.toc-wrapper details[open] #TableOfContents {
+    animation: sweep .5s ease-in-out;
+}
+
+.toc-wrapper details:not([open]) #TableOfContents {
+    animation: none;
+}
+
+@keyframes sweep {
+    0% {
+        opacity: 0;
+        margin-top: -10px
+    }
+
+    100% {
+        opacity: 1;
+        margin-top: 0px
+    }
+}
+
+/* DECLARATIVE STYLES */
+/* For use within a markdown file */
+.center-text {
+    text-align: center;
+}
+
+.rounded {
+    border-radius: 12px;
+}
+
+.ball {
+    border-radius: 50%;
+}
+
+.border {
+    border: 3px solid var(--highlight-color);
+}
+
+.spin {
+    transform: rotate(20deg);
+    display: inline-block;
+    animation-name: spin;
+    animation-duration: 14000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+.spin-slow {
+    transform: rotate(20deg);
+    display: inline-block;
+    animation-name: spin;
+    animation-duration: 98000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}

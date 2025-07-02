@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Carlos Chacin</title>
+    <link>https://chacin.dev/tags/</link>
+    <description>Recent content in Tags on Carlos Chacin</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 01 Jul 2025 21:51:44 -0400</lastBuildDate>
+    <atom:link href="https://chacin.dev/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Dev</title>
+      <link>https://chacin.dev/tags/dev/</link>
+      <pubDate>Sun, 26 Jul 2020 09:00:00 -0700</pubDate>
+      <guid>https://chacin.dev/tags/dev/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Javascript</title>
+      <link>https://chacin.dev/tags/javascript/</link>
+      <pubDate>Sun, 26 Jul 2020 09:00:00 -0700</pubDate>
+      <guid>https://chacin.dev/tags/javascript/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Rust</title>
+      <link>https://chacin.dev/tags/rust/</link>
+      <pubDate>Sun, 26 Jul 2020 09:00:00 -0700</pubDate>
+      <guid>https://chacin.dev/tags/rust/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Web</title>
+      <link>https://chacin.dev/tags/web/</link>
+      <pubDate>Sun, 26 Jul 2020 09:00:00 -0700</pubDate>
+      <guid>https://chacin.dev/tags/web/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>
