@@ -2,33 +2,33 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://dev.weirdgravity.com/posts/</loc>
+    <loc>https://chacin.dev/posts/</loc>
     <lastmod>2025-07-01T01:55:51-04:00</lastmod>
   </url><url>
-    <loc>https://dev.weirdgravity.com/tags/dev/</loc>
+    <loc>https://chacin.dev/tags/dev/</loc>
     <lastmod>2025-07-02T15:20:22-04:00</lastmod>
   </url><url>
-    <loc>https://dev.weirdgravity.com/posts/getting-started-with-webassembly-and-rust/</loc>
+    <loc>https://chacin.dev/posts/getting-started-with-webassembly-and-rust/</loc>
     <lastmod>2025-07-02T15:20:22-04:00</lastmod>
   </url><url>
-    <loc>https://dev.weirdgravity.com/tags/javascript/</loc>
+    <loc>https://chacin.dev/tags/javascript/</loc>
     <lastmod>2025-07-02T15:20:22-04:00</lastmod>
   </url><url>
-    <loc>https://dev.weirdgravity.com/tags/rust/</loc>
+    <loc>https://chacin.dev/tags/rust/</loc>
     <lastmod>2025-07-02T15:20:22-04:00</lastmod>
   </url><url>
-    <loc>https://dev.weirdgravity.com/tags/</loc>
+    <loc>https://chacin.dev/tags/</loc>
     <lastmod>2025-07-02T15:20:22-04:00</lastmod>
   </url><url>
-    <loc>https://dev.weirdgravity.com/tags/web/</loc>
+    <loc>https://chacin.dev/tags/web/</loc>
     <lastmod>2025-07-02T15:20:22-04:00</lastmod>
   </url><url>
-    <loc>https://dev.weirdgravity.com/posts/cross-compiling-rust-for-the-raspberry-pi/</loc>
+    <loc>https://chacin.dev/posts/cross-compiling-rust-for-the-raspberry-pi/</loc>
     <lastmod>2025-07-01T03:25:19-04:00</lastmod>
   </url><url>
-    <loc>https://dev.weirdgravity.com/categories/</loc>
+    <loc>https://chacin.dev/categories/</loc>
   </url><url>
-    <loc>https://dev.weirdgravity.com/</loc>
+    <loc>https://chacin.dev/</loc>
     <lastmod>2025-07-02T13:46:16-04:00</lastmod>
   </url>
 </urlset>
