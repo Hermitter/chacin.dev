@@ -21,7 +21,7 @@
     "highlight.js": "^9.16.2",
     "jquery": "^3.5.1",
     "polka": "next",
-    "prismjs": "^1.23.0",
+    "prismjs": "^1.27.0",
     "reading-time": "^1.2.0",
     "remarkable": "^2.0.0",
     "rollup-plugin-postcss": "^2.0.4",
