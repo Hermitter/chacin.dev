@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Programming Languages on Carlos Chacin</title><link>https://chacin.dev/notes/langs/</link><description>Recent content in Programming Languages on Carlos Chacin</description><generator>Hugo</generator><language>en-us</language><atom:link href="https://chacin.dev/notes/langs/index.xml" rel="self" type="application/rss+xml"/><item><title>Go</title><link>https://chacin.dev/notes/langs/go/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://chacin.dev/notes/langs/go/</guid><description>&lt;h2 class="section-header" id="tips">
+ &lt;a class="section-header" href="#tips">Tips&lt;/a>
+&lt;/h2>&lt;h3 class="section-header" id="viewing-offline-docs">
+ &lt;a class="section-header" href="#viewing-offline-docs">Viewing offline docs&lt;/a>
+&lt;/h3>
+
+
+
+
+
+
+
+&lt;div class="code-block">
+ &lt;div class="code-block-tabs">
+ 
+ 
+ &lt;div class="code-block-lang">
+ &lt;p>sh&lt;/p>
+ &lt;/div>
+ 
+ 
+ 
+ &lt;/div>
+ &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-sh" data-lang="sh">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Opens a web page of the current module&amp;#39;s docs.&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Defaults to the std lib, if no module was found.&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">go doc -http&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div></description></item></channel></rss>

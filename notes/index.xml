@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Notes on Carlos Chacin</title><link>https://chacin.dev/notes/</link><description>Recent content in Notes on Carlos Chacin</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 01 Jun 2026 12:59:26 -0400</lastBuildDate><atom:link href="https://chacin.dev/notes/index.xml" rel="self" type="application/rss+xml"/><item><title>helix</title><link>https://chacin.dev/notes/helix/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://chacin.dev/notes/helix/</guid><description>&lt;h3 class="section-header" id="links">
+ &lt;a class="section-header" href="#links">Links&lt;/a>
+&lt;/h3>&lt;ul>
+&lt;li>
+&lt;a href="https://docs.helix-editor.com/keymap.html" target="_blank">Docs&lt;/a>&lt;/li>
+&lt;li>
+&lt;a href="https://github.com/helix-editor/helix/wiki/Migrating-from-Vim" target="_blank">Migrating From Vim&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 class="section-header" id="tips">
+ &lt;a class="section-header" href="#tips">Tips&lt;/a>
+&lt;/h2></description></item><item><title>sewing</title><link>https://chacin.dev/notes/sewing/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://chacin.dev/notes/sewing/</guid><description>&lt;h2 class="section-header" id="videos">
+ &lt;a class="section-header" href="#videos">Videos&lt;/a>
+&lt;/h2>&lt;ul>
+&lt;li>
+&lt;a href="https://www.youtube.com/watch?v=1FknfumFPX8" target="_blank">Basic Stitches&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>ssh</title><link>https://chacin.dev/notes/ssh/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://chacin.dev/notes/ssh/</guid><description>&lt;h2 class="section-header" id="forward-traffic-through-an-ssh-server">
+ &lt;a class="section-header" href="#forward-traffic-through-an-ssh-server">Forward Traffic through an SSH server&lt;/a>
+&lt;/h2>&lt;p>The command below creates a SOCKS server which can be used as
+a proxy to forward traffic through a host.&lt;/p>
+
+
+
+
+
+
+
+
+&lt;div class="code-block">
+ &lt;div class="code-block-tabs">
+ 
+ 
+ &lt;div class="code-block-lang">
+ &lt;p>sh&lt;/p>
+ &lt;/div>
+ 
+ 
+ 
+ &lt;/div>
+ &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-sh" data-lang="sh">&lt;span class="line">&lt;span class="cl">ssh -d &lt;span class="m">8080&lt;/span> &amp;lt;user&amp;gt;@&amp;lt;server&amp;gt;&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>&lt;p>Once ready, you can open your browser and set it to use your
+proxy server. Below is what the option looks like for Firefox.&lt;/p>
+&lt;p class="center">&lt;img src="https://chacin.dev/notes/ssh/images/firefox_proxy_setting.png" alt="Menu in Firefox for configuring proxy settings"
+ width="600"
+ height="289" loading="lazy" 
+>&lt;/p></description></item><item><title>web</title><link>https://chacin.dev/notes/web/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://chacin.dev/notes/web/</guid><description>&lt;h2 class="section-header" id="tools">
+ &lt;a class="section-header" href="#tools">Tools&lt;/a>
+&lt;/h2>&lt;ul>
+&lt;li>
+&lt;a href="https://wave.webaim.org/" target="_blank">Web Aim&lt;/a>: Accessibility Evaluation.&lt;/li>
+&lt;/ul></description></item><item><title>YubiKey</title><link>https://chacin.dev/notes/yubikey/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://chacin.dev/notes/yubikey/</guid><description>&lt;h3 class="section-header" id="tools">
+ &lt;a class="section-header" href="#tools">Tools&lt;/a>
+&lt;/h3>&lt;ul>
+&lt;li>
+&lt;a href="https://github.com/Yubico/yubikey-manager" target="_blank">ykman&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 class="section-header" id="first-time-setup">
+ &lt;a class="section-header" href="#first-time-setup">First Time Setup&lt;/a>
+&lt;/h2>
+
+
+
+
+
+
+
+&lt;div class="code-block">
+ &lt;div class="code-block-tabs">
+ 
+ 
+ &lt;div class="code-block-lang">
+ &lt;p>sh&lt;/p>
+ &lt;/div>
+ 
+ 
+ 
+ &lt;/div>
+ &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-sh" data-lang="sh">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># View info on connected devices&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ykman info
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Configure the modes you need&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Just be sure to disable OTP (one touch passwords) as they&amp;#39;re prone to being accidentally sent&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ykman config mode &lt;span class="s2">&amp;#34;FIDO+CCID&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Set FIDO Pin&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ykman fido access change-pin &amp;lt;pin&amp;gt;&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>&lt;h2 class="section-header" id="ssh-key">
+ &lt;a class="section-header" href="#ssh-key">SSH Key&lt;/a>
+&lt;/h2>&lt;p>SSH keys can be stored on FIDO devices to help protect against private key thefts.&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;a href="https://developers.yubico.com/SSH/Securing_SSH_with_FIDO2.html" target="_blank">Official Guide&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h3 class="section-header" id="creation">
+ &lt;a class="section-header" href="#creation">Creation&lt;/a>
+&lt;/h3>
+
+
+
+
+
+
+
+&lt;div class="code-block">
+ &lt;div class="code-block-tabs">
+ 
+ 
+ &lt;div class="code-block-lang">
+ &lt;p>sh&lt;/p></description></item></channel></rss>
